@@ -22,7 +22,7 @@ $ souce build.sh
 ## Frontend develop guide
 The npm dev server automaticaly start when container build or start. 
 1. You should install npm packages written in  package.json file.
-   Attach frontend container and execute below command in target directory.
+   Attach to frontend container and execute below command in target directory.
 ```Shell
 # Execute on frontend container.
 $ cd /usr/src/app/
