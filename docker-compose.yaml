@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+    frontend:
+      env_file: frontend/.env
+      build: 
+        context: .
+        dockerfile: ./frontend/Dockerfile
+        args:
+          USER_NAME: root
+          APP_PATH: /usr/src/frontend
+      volumes:
+        - ./frontend:/usr/src/frontend
+      command: sh -c "cd app && yarn start"
+      tty: true
+      stdin_open: true
+      mem_limit: 2g
+      ports: 
+        - 3030:3000
+
+volumes:
+  data:
+  logs:
