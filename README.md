@@ -25,6 +25,6 @@ The npm dev server automaticaly start when container build or start.
    Attach to frontend container and execute below command in target directory.
 ```Shell
 # Execute on frontend container.
-$ cd /usr/src/app/
+$ cd /workspace/frontend/app/
 $ npm install
 ```
