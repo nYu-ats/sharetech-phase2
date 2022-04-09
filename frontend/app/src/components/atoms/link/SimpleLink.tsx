@@ -1,4 +1,4 @@
-import { VFC, ReactNode } from "react";
+import { VFC } from "react";
 import styled from 'styled-components';
 import { BaseLinkProps } from "./BaseLink";
 
@@ -22,8 +22,7 @@ font-wight:${(props) => ( props.fontWeight ? props.fontWeight : "bold")};
 }
 `
 
-
 export const Link: VFC<SimpleLinkProps> = (props) => {
 
-    return <StyledLink {...props}>{props.children}</StyledLink>;
+    return <StyledLink href={props.anchorTo} {...props}>{props.children}</StyledLink>;
 }
