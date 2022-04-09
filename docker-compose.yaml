@@ -11,10 +11,11 @@ services:
           APP_PATH: /usr/src/frontend
       volumes:
         - ./frontend:/usr/src/frontend
-      command: sh -c "cd app && yarn start"
+      command: sh -c "cd app && npm install && tail -f /dev/null"
       tty: true
       stdin_open: true
       mem_limit: 2g
+      cpuset: 0-3
       ports: 
         - 3030:3000
 
