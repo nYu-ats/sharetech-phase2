@@ -6,6 +6,7 @@ import { OutlinedHomeIcon } from '../../../icons/OutlinedHomeIcon';
 import { OutlinedHelpIcon } from '../../../icons/OutlinedHelpIcon';
 import { OutlinedAccountIcon } from '../../../icons/OutlinedAccountIcon';
 import Logo from '../../../icons/logo.png';
+import { HumbergerButton } from '../../atoms/button/HumbergerButton';
 
 export type HeaderProps = BaseHeaderProps & {}
 
@@ -14,11 +15,8 @@ export const Header:VFC = () => {
         <div style={{
             width: "100vw",
             height: "100px",
-            position: "fixed",
-            top: "0",
-            left: "0",
             backgroundColor: "#33ccff",
-            borderBottom:"1px solid white"
+            borderBottom:"1px solid white",
         }}>
             <div style={{
                 display: "flex",
@@ -33,11 +31,17 @@ export const Header:VFC = () => {
                     flexDirection:"column",
                     justifyContent:"center",
                     width:"15%",
+                    margin:"auto .5em"
                 }}>
-                    <div>
-                        <Link anchorTo="#">
-                            <OutlinedHomeIcon color='white'/>
-                        </Link>
+                    <div style={{display:"flex"}}>
+                        <div style={{marginRight:"1em"}}>
+                            <HumbergerButton/>
+                        </div>
+                        <div>
+                            <Link anchorTo="#">
+                                <OutlinedHomeIcon color='white'/>
+                            </Link>
+                        </div>
                     </div>
                 </div>
                 <div style={{width:"70%", textAlign:"center"}}>

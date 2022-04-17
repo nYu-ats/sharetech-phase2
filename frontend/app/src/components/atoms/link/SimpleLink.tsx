@@ -15,9 +15,9 @@ const StyledLink = styled.a<{
 }>`
 color: ${(props) => ( props.color ? props.color : "#666")};;
 font-wight:${(props) => ( props.fontWeight ? props.fontWeight : "bold")};
+text-decoration: none;
 &:hover {
     cursor: pointer;
-    textDecoration: none;
     color: ${(props) => ( props.hoveredColor ? props.hoveredColor : "black")};
 }
 `

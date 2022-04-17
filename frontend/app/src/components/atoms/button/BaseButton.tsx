@@ -1,11 +1,10 @@
 import React from 'react';
 
 export type BaseButtonProps = {
-    label: string;
+    label?: string;
     action?: "button" | "submit" | "reset" | undefined;
     backgroundColor?: string;
     color?: string;
-    fontWeight?: string;
     hoverBgColor?: string;
     width?:string;
     height?:string;

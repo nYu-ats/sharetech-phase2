@@ -2,7 +2,9 @@ import { VFC } from 'react';
 import { BaseButtonProps } from './BaseButton';
 import styled from 'styled-components';
 
-export type SimpleButtonProps = BaseButtonProps & {
+export type FloatButtonProps = BaseButtonProps & {
+    fontSize?:string;
+    borderRadius?: string;
 }
 
 const SimpleStyledButton = styled.button<{
@@ -10,26 +12,32 @@ const SimpleStyledButton = styled.button<{
     height?:string, 
     backgroundColor?:string, 
     color?:string, 
-    hoverBgColor?:string,}>
+    borderRadius?:string,
+    fontSize?:string
+    hoverBgColor?:string,
+    shadow?:string}>
     `
     box-sizing: border-box;
     display:block;
+    font-size: ${(props) => ( props.fontSize ? props.fontSize : "auto")};
     font-weight: bold;
     padding:0 1em;
     border:none;
-    border-radius:2px;
+    border-radius:${(props) => ( props.borderRadius ? props.borderRadius : "2px")};
     transition: .3s;
     width: ${(props) => ( props.width ? props.width : "100%")};
     height: ${(props) => ( props.height ? props.height : "100%")};
     background-color: ${(props) => ( props.backgroundColor ? props.backgroundColor : "#7070ff")};
     color: ${(props) => ( props.color ? props.color : "white")};
+    box-shadow: 0 0 4px #abb1b5;
     &:hover{
         cursor:pointer;
         background-color:${(props) => ( props.hoverBgColor ? props.hoverBgColor : "#9999ff")};
+        box-shadow: 0 0 8px #abb1b5;
     }
 `
 
-export const SimpleButton: VFC<SimpleButtonProps> = (props) => {
+export const FloatButton: VFC<FloatButtonProps> = (props) => {
 
     
     return (
