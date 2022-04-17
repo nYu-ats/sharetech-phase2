@@ -17,6 +17,6 @@ export const SimpleLabel: VFC<SimpleLabelProps> = (props) => {
     `
     
     return (
-        <StyledLabel>{props.label}</StyledLabel>
+        <StyledLabel {...props} >{props.label}</StyledLabel>
     )
 }
