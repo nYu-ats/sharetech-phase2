@@ -16,7 +16,7 @@ $ echo "USER_NAME: app" > .env
 3. Finaly, execute build script.
 ```Shell
 $ cd ./sharetech_v2
-$ souce build.sh
+$ source build.sh
 ```
 
 ## Frontend develop guide

@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 
-export type BaseLinkProps = {
+export type BaseListItemProps = {
     children: ReactNode;
-    anchorTo: string;
+    listStyle?: string;
 }
