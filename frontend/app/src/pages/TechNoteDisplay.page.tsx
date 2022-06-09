@@ -3,7 +3,8 @@ import { VFC, ReactNode } from 'react';
 import { Header } from "../components/organisms/header/Header";
 import { TagLinkContainer } from "../components/organisms/noteLinkContainer/TagLinkContainer";
 import { TechNoteAccountInfoContainer } from "../components/organisms/noteLinkContainer/TechNoteAccountInfoContainer";
-import { TechNoteLink } from "../components/organisms/contentLink/TechNoteLink";
+import { TechNoteLinkIcon } from '../icons/TechNoteLinkIcon';
+import { Link } from '../components/atoms/link/SimpleLink';
 import { SimpleButton } from '../components/atoms/button/SimpleButton';
 import { TechNoteContentContainer } from "../components/organisms/noteLinkContainer/TechNoteContentContainer";
 import { ExtraNoteLinkContainer } from "../components/organisms/noteLinkContainer/ExtraNoteLinkContainer";
@@ -12,13 +13,15 @@ export const TechNoteDisplayPage: VFC = () => {
 
     const header = <Header />
     const tags = <TagLinkContainer
-        tags={["タグ1","タグ2"]} />
+        tags={["タグ1", "タグ2"]} />
     const account = <TechNoteAccountInfoContainer
         icon="test.png"
         name="シェアテク太郎"
         date="2021/8/1"
     />
-    const techNoteLink = <TechNoteLink />
+    const techNoteLink = <div style={{ margin: "0 1em" }}>
+        <Link anchorTo="#"><TechNoteLinkIcon color='black' /></Link>
+    </div>
     const favoriteButton =
         <SimpleButton label='お気に入り' action='submit' color='#000000' backgroundColor='#ffc6c6' height="4em" width="16em" />
     const businessFlow = (
