@@ -17,22 +17,22 @@ export const MyNoteTemplate:VFC<MyNoteTemplateProps> = (props) => {
                 <div style={{position:"fixed", bottom:"2.5em", left:"2.5em"}}>
                     {props.switchBtn}
                 </div>
-                <div style={{margin:"1em"}}>
+                <div style={{padding:"1em"}}>
                     {props.myNoteMeta}
                 </div>
-                <div style={{margin:"1em"}}>
+                <div style={{padding:"1em"}}>
                     {props.businessFlow}
                 </div>
-                <div style={{margin:"1em"}}>
+                <div style={{padding:"1em"}}>
                     {props.goal}
                 </div>
-                <div style={{margin:"1em"}}>
+                <div style={{padding:"1em"}}>
                     {props.problem}
                 </div>
-                <div style={{margin:"1em"}}>
+                <div style={{padding:"1em"}}>
                     {props.solution}
                 </div>
-                <div style={{margin:"1em"}}>
+                <div style={{padding:"1em"}}>
                     {props.result}
                 </div>
         </SimpleTemplate>

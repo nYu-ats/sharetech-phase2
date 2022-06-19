@@ -34,7 +34,7 @@ export const MyNoteContent:VFC<MyNoteContentProps> = (props) => {
     }
 
     return (
-        <div style={{marginBottom:"3em"}}>
+        <div style={{paddingBottom:"3em"}}>
             <div style={{
                 fontSize:"1.2em", 
                 fontWeight:"bold" , 
