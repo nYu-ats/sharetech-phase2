@@ -2,7 +2,7 @@ import { VFC } from 'react';
 import { BaseInputProps } from './BaseInput'
 import styled from 'styled-components';
 
-export type SelectInputProps = BaseInputProps & {
+export type SelectInputProps = {
     backgroundColor?: string;
     border?: string;
     color?: string;

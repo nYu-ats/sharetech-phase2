@@ -6,7 +6,6 @@ import { OutlinedHomeIcon } from '../../../icons/OutlinedHomeIcon';
 import { OutlinedHelpIcon } from '../../../icons/OutlinedHelpIcon';
 import { OutlinedAccountIcon } from '../../../icons/OutlinedAccountIcon';
 import Logo from '../../../icons/logo.png';
-import { HumbergerButton } from '../../atoms/button/HumbergerButton';
 
 export type HeaderProps = BaseHeaderProps & {}
 
@@ -34,9 +33,6 @@ export const Header:VFC = () => {
                     margin:"auto .5em"
                 }}>
                     <div style={{display:"flex"}}>
-                        <div style={{marginRight:"1em"}}>
-                            <HumbergerButton/>
-                        </div>
                         <div>
                             <Link anchorTo="#">
                                 <OutlinedHomeIcon color='white'/>

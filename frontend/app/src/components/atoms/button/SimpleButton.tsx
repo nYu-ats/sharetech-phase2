@@ -3,6 +3,7 @@ import { BaseButtonProps } from './BaseButton';
 import styled from 'styled-components';
 
 export type SimpleButtonProps = BaseButtonProps & {
+    disabled?:boolean;
 }
 
 const SimpleStyledButton = styled.button<{
@@ -10,7 +11,8 @@ const SimpleStyledButton = styled.button<{
     height?:string, 
     backgroundColor?:string, 
     color?:string, 
-    hoverBgColor?:string,}>
+    hoverBgColor?:string,
+    disabled?:boolean,}>
     `
     box-sizing: border-box;
     display:block;
@@ -19,6 +21,7 @@ const SimpleStyledButton = styled.button<{
     border:none;
     border-radius:2px;
     transition: .3s;
+    display: ${(props) => ( props.disabled ? "none"  : "block")};
     width: ${(props) => ( props.width ? props.width : "100%")};
     height: ${(props) => ( props.height ? props.height : "100%")};
     background-color: ${(props) => ( props.backgroundColor ? props.backgroundColor : "#7070ff")};
