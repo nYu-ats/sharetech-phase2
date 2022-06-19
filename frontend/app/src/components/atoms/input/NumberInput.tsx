@@ -2,7 +2,7 @@ import { VFC } from 'react';
 import { BaseInputProps } from './BaseInput'
 import styled from 'styled-components';
 
-export type TextInputProps = BaseInputProps & {
+export type NumberInputProps = BaseInputProps & {
     placeHolder: string;
     defaultValue?: string;
     value?:string;
@@ -16,7 +16,7 @@ export type TextInputProps = BaseInputProps & {
     fontWeight?:string;
 }
 
-const StyledTextInput = styled.input<{
+const StyledNumberInput = styled.input<{
     color?:string,
     backgroundColor?:string,
     border?:string,
@@ -36,17 +36,11 @@ box-sizing: border-box;
 font-size: ${(props) => ( props.fontSize ? props.fontSize : ".8em")};
 `
 
-export const TextInput: VFC<TextInputProps> = (props) => {
+export const NumberInput: VFC<NumberInputProps> = (props) => {
 
     
     return (
-        <StyledTextInput 
-        type="text" 
-        disabled={props.disabled} 
-        data-index={props.index} 
-        placeholder={props.placeHolder} 
-        defaultValue={props.defaultValue} 
-        value={props.value}
-        {...props}/>
+        <StyledNumberInput type="number" disabled={props.disabled} data-index={props.index} placeholder={props.placeHolder} defaultValue={props.defaultValue} value={props.value}
+            {...props}/>
     );
 }

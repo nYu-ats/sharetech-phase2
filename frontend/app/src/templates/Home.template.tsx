@@ -1,19 +1,15 @@
 import { VFC, ReactNode } from 'react';
+import { SimpleTemplate } from './Simple.template';
 
 export type TopTemplateProps = {
-    header: ReactNode;
     myNote?: ReactNode;
     attentionNote?: ReactNode;
     news?: ReactNode;
 }
 
-export const TopTemplate:VFC<TopTemplateProps> = (props) => {
+export const HomeTemplate:VFC<TopTemplateProps> = (props) => {
     return (
-        <div style={{width:"100%", backgroundColor:"#e8ecef"}}>
-            <div style={{position:"sticky", top:"0"}}>
-                {props.header}
-            </div>
-            <div style={{width:"85vw", padding:"0 7.5vw"}}>
+        <SimpleTemplate>
                 <div>
                     {props.myNote}
                 </div>
@@ -23,8 +19,6 @@ export const TopTemplate:VFC<TopTemplateProps> = (props) => {
                 <div>
                     {props.news}
                 </div>
-            </div>
-
-        </div>
+        </SimpleTemplate>
     );
 }

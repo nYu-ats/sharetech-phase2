@@ -13,7 +13,7 @@ const StyledLink = styled.a<{
     fontWeight ?: string;
     hoveredColor ?: string;
 }>`
-color: ${(props) => ( props.color ? props.color : "#666")};;
+color: ${(props) => ( props.color ? props.color : "#666")};
 font-wight:${(props) => ( props.fontWeight ? props.fontWeight : "bold")};
 text-decoration: none;
 &:hover {

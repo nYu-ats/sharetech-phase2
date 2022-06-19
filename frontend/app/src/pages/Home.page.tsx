@@ -1,13 +1,11 @@
-import { TopTemplate } from "../templates/Top.template";
+import { HomeTemplate } from "../templates/Home.template";
 import { VFC, ReactNode } from 'react';
-import { Header } from "../components/organisms/header/Header";
 import { MyNoteLinkContainer } from "../components/organisms/noteLinkContainer/MyNoteLinkContainer";
 import { AttentionNoteLinkContainer } from "../components/organisms/noteLinkContainer/AttentionNoteLinkContainer";
 import { NewsLinkContainer } from "../components/organisms/noteLinkContainer/NewsLinkContainer";
 
-export const TopPage:VFC = () => {
+export const HomePage:VFC = () => {
 
-    const header = <Header/>
     const myNote = (
     <MyNoteLinkContainer 
     items={
@@ -132,8 +130,7 @@ export const TopPage:VFC = () => {
     );
 
     return (
-        <TopTemplate 
-        header={header} 
+        <HomeTemplate 
         myNote={myNote} 
         attentionNote={attentionNote}
         news={news}
