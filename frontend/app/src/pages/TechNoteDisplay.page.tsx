@@ -122,25 +122,40 @@ export const TechNoteDisplayPage: VFC = () => {
         <ExtraNoteLinkContainer
             items={[
                 {
-                    title: "test1",
-                    overview: "test1"
+                    title: "製造業の働き方改革をタスク管理ツールで実践",
+                    tags: ["test1"],
+                    icon: "test1.png",
+                    name: "シェアテック太郎",
+                    date: "2022/06/19",
                 },
                 {
-                    title: "test1",
-                    overview: "test1"
+                    title: "製造業の働き方改革をタスク管理ツールで実践",
+                    tags: ["test1"],
+                    icon: "test1.png",
+                    name: "シェアテック太郎",
+                    date: "2022/06/19",
                 },
                 {
-                    title: "test1",
-                    overview: "test1"
+                    title: "製造業の働き方改革をタスク管理ツールで実践",
+                    tags: ["test1"],
+                    icon: "test1.png",
+                    name: "シェアテック太郎",
+                    date: "2022/06/19",
                 },
                 {
-                    title: "test1",
-                    overview: "test1"
+                    title: "製造業の働き方改革をタスク管理ツールで実践",
+                    tags: ["test1"],
+                    icon: "test1.png",
+                    name: "シェアテック太郎",
+                    date: "2022/06/19",
                 },
                 {
-                    title: "test1",
-                    overview: "test1"
-                },
+                    title: "製造業の働き方改革をタスク管理ツールで実践",
+                    tags: ["test1"],
+                    icon: "test1.png",
+                    name: "シェアテック太郎",
+                    date: "2022/06/19",
+                }
             ]} />
     );
 

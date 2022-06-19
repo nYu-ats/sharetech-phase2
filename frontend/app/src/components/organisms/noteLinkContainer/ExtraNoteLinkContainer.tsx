@@ -2,15 +2,18 @@ import { VFC } from "react";
 import { BaseContentLinkContainerProps } from "./BaseContentLinkContainer";
 import { SimpleList } from "../../molecules/list/SimpleList";
 import { Link } from "../../atoms/link/SimpleLink";
-import { NewsLink } from "../contentLink/NewsLink";
+import { ExtraNoteLink } from "../contentLink/ExtraNoteLink";
 
 export type AttentionNoteLinkContainerProps = BaseContentLinkContainerProps & {
-    items: Array<NewsItem>;
+    items: Array<ExtraNoteItem>;
 }
 
-type NewsItem = {
+type ExtraNoteItem = {
     title: string;
-    overview: string;
+    tags: Array<string>;
+    icon: string;
+    name: string;
+    date: string;
 }
 
 export const ExtraNoteLinkContainer: VFC<AttentionNoteLinkContainerProps> = (props) => {
@@ -27,9 +30,12 @@ export const ExtraNoteLinkContainer: VFC<AttentionNoteLinkContainerProps> = (pro
                 {props.items.map((item) => {
                     return (
                         <div style={{ marginRight: "2em", marginBottom: "1em" }}>
-                            <NewsLink
+                            <ExtraNoteLink
                                 title={item.title}
-                                overview={item.overview} />
+                                tags={item.tags}
+                                icon={item.icon}
+                                name={item.name}
+                                date={item.date} />
                         </div>
                     );
                 })}
