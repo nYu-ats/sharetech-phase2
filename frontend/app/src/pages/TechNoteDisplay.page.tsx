@@ -1,5 +1,5 @@
 import { TechNoteDisplayTemplate } from "../templates/TechNoteDisplay.template";
-import { VFC, ReactNode } from 'react';
+import { VFC, ReactNode, useEffect, useState } from 'react';
 import { Header } from "../components/organisms/header/Header";
 import { TagLinkContainer } from "../components/organisms/noteLinkContainer/TagLinkContainer";
 import { TechNoteAccountInfoContainer } from "../components/organisms/noteLinkContainer/TechNoteAccountInfoContainer";
@@ -8,17 +8,23 @@ import { Link } from '../components/atoms/link/SimpleLink';
 import { SimpleButton } from '../components/atoms/button/SimpleButton';
 import { TechNoteContentContainer } from "../components/organisms/noteLinkContainer/TechNoteContentContainer";
 import { ExtraNoteLinkContainer } from "../components/organisms/noteLinkContainer/ExtraNoteLinkContainer";
+import { techNoteItem } from "../routes/AppRoute";
 
-export const TechNoteDisplayPage: VFC = () => {
+type Props = {
+    data: techNoteItem
+}
 
+export const TechNoteDisplayPage: VFC<Props> = (props) => {
+
+    // dataがとってこれない。。
+    // console.log({props.data});
     const header = <Header />
     const tags = <TagLinkContainer
         tags={["タグ1", "タグ2"]} />
     const account = <TechNoteAccountInfoContainer
-        icon="test.png"
-        name="シェアテク太郎"
-        date="2021/8/1"
-    />
+        icon="icon.png"
+        name="シェアテック太郎"
+        date="{data.account.date}" />
     const techNoteLink = <div style={{ margin: "0 1em" }}>
         <Link anchorTo="#"><TechNoteLinkIcon color='black' /></Link>
     </div>

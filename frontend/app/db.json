@@ -1,0 +1,10 @@
+{
+    "data": {
+        "account": {
+            "id": 1,
+            "icon": "test.png",
+            "name": "シェアテク太郎",
+            "date": "2021/8/1"
+        }
+    }
+}
