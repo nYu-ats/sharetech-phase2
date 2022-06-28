@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type BaseButtonProps = {
-    label?: string;
+    label?: React.ReactNode;
     action?: "button" | "submit" | "reset" | undefined;
     backgroundColor?: string;
     color?: string;

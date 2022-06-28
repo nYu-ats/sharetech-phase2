@@ -1,3 +1,5 @@
 import React, {ReactNode} from 'react';
 
-export type BaseInputProps = {}
+export type BaseInputProps = {
+    onChange?: React.ChangeEventHandler<HTMLInputElement|HTMLTextAreaElement>;
+}

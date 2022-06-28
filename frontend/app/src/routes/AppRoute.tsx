@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRoutes } from 'react-router-dom';
-import { TopPage } from '../pages/Top.page';
+import { HomePage } from '../pages/Home.page';
+import { MyNotePage } from '../pages/MyNote.page';
 import { TechNoteDisplayPage } from '../pages/TechNoteDisplay.page';
 
 // TODO: 記載する箇所の相談
@@ -28,8 +29,12 @@ export const AppRoute = () => {
     
     let element = useRoutes([
         {
-            path: '/',
-            element: <TopPage />,
+            path: '/home',
+            element: <HomePage />,
+        },
+        {
+            path: '/myNote',
+            element: <MyNotePage />,
         },
         {
             path: '/TechNoteDisplay',

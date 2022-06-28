@@ -5,11 +5,13 @@ import styled from 'styled-components';
 export type FloatButtonProps = BaseButtonProps & {
     fontSize?:string;
     borderRadius?: string;
+    padding?:string;
 }
 
 const SimpleStyledButton = styled.button<{
     width?:string, 
     height?:string, 
+    padding?: string,
     backgroundColor?:string, 
     color?:string, 
     borderRadius?:string,
@@ -20,8 +22,9 @@ const SimpleStyledButton = styled.button<{
     box-sizing: border-box;
     display:block;
     font-size: ${(props) => ( props.fontSize ? props.fontSize : "auto")};
+    line-height: ${(props) => ( props.fontSize ? props.fontSize : "auto")};
     font-weight: bold;
-    padding:0 1em;
+    padding:${(props) => ( props.padding ? props.padding : "0 1em")};
     border:none;
     border-radius:${(props) => ( props.borderRadius ? props.borderRadius : "2px")};
     transition: .3s;
@@ -30,6 +33,7 @@ const SimpleStyledButton = styled.button<{
     background-color: ${(props) => ( props.backgroundColor ? props.backgroundColor : "#7070ff")};
     color: ${(props) => ( props.color ? props.color : "white")};
     box-shadow: 0 0 4px #abb1b5;
+    margin: 0 auto;
     &:hover{
         cursor:pointer;
         background-color:${(props) => ( props.hoverBgColor ? props.hoverBgColor : "#9999ff")};
@@ -38,7 +42,6 @@ const SimpleStyledButton = styled.button<{
 `
 
 export const FloatButton: VFC<FloatButtonProps> = (props) => {
-
     
     return (
     <SimpleStyledButton 
