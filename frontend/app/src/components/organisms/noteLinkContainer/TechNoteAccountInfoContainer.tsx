@@ -12,7 +12,7 @@ export type TechNoteAccountInfoContainerProps = BaseContentLinkContainerProps & 
 
 export const TechNoteAccountInfoContainer: VFC<TechNoteAccountInfoContainerProps> = (props) => {
     return (
-        <div style={{ padding: "2em 0", display: "flex", alignItems: "center" }}>
+        <div style={{ padding: "1em 0", display: "flex", alignItems: "center" }}>
             <div style={{ padding: "0.5em", background: "#e3e3e3", borderRadius: "1em", textAlign: "center" }}>
                 <img src={props.icon} style={{ height: "2em", width: "2em" }} />
             </div>

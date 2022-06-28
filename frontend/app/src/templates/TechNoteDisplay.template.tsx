@@ -1,4 +1,5 @@
 import { VFC, ReactNode } from 'react';
+import { SimpleTemplate } from './Simple.template';
 
 export type TechNoteDisplayTemplateProps = {
     header: ReactNode;
@@ -18,11 +19,8 @@ export type TechNoteDisplayTemplateProps = {
 
 export const TechNoteDisplayTemplate: VFC<TechNoteDisplayTemplateProps> = (props) => {
     return (
-        <div style={{ width: "100%", backgroundColor: "#ffffff" }}>
-            <div style={{ position: "sticky", top: "0" }}>
-                {props.header}
-            </div>
-            <div style={{ textAlign: "center", fontSize: "3em", padding: "0 30vw" }}>
+        <SimpleTemplate>
+            <div style={{ textAlign: "center", fontSize: "3em" }}>
                 {props.title}
             </div>
             <div style={{ padding: "0 15vw" }}>
@@ -37,33 +35,30 @@ export const TechNoteDisplayTemplate: VFC<TechNoteDisplayTemplateProps> = (props
                     {props.favoriteButton}
                 </div>
             </div>
-            <div style={{ width: "85vw", padding: "0 7.5vw" }}>
-                <div>
-                    {props.businessFlow}
-                </div>
-                <div>
-                    {props.toBeGoal}
-                </div>
-                <div>
-                    {props.taskOrganize}
-                </div>
-                <div>
-                    {props.solutionInfo}
-                </div>
-                <div>
-                    {props.result}
-                </div>
-                <div>
-                    {props.reference}
-                </div>
-                <div>
-                    {props.favoriteButton}
-                </div>
-                <div>
-                    {props.extra}
-                </div>
+            <div style={{ padding: "1em" }}>
+                {props.businessFlow}
             </div>
-
-        </div>
+            <div style={{ padding: "1em" }}>
+                {props.toBeGoal}
+            </div>
+            <div style={{ padding: "1em" }}>
+                {props.taskOrganize}
+            </div>
+            <div style={{ padding: "1em" }}>
+                {props.solutionInfo}
+            </div>
+            <div style={{ padding: "1em" }}>
+                {props.result}
+            </div>
+            <div style={{ padding: "1em" }}>
+                {props.reference}
+            </div>
+            <div style={{ padding: "1em" }}>
+                {props.favoriteButton}
+            </div>
+            <div style={{ padding: "1em" }}>
+                {props.extra}
+            </div>
+        </SimpleTemplate>
     );
 }

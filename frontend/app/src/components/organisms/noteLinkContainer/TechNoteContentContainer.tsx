@@ -19,7 +19,7 @@ type TechNoteContentItem = {
 
 export const TechNoteContentContainer: VFC<TechNoteContentContainerProps> = (props) => {
     return (
-        <div style={{ padding: "2em 0" }}>
+        <div>
             <div style={{ padding: "0em", margin: "2em 0", background: "#e3e3e3", border: "solid 1px", textAlign: "center" }}>
                 <h2>{props.title}</h2>
             </div>
