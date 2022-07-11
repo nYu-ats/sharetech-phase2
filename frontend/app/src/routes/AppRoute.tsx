@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRoutes } from 'react-router-dom';
 import { HomePage } from '../pages/Home.page';
 import { MyNotePage } from '../pages/MyNote.page';
-import { TechNoteDisplayPage } from '../pages/TechNoteDisplay.page';
+import { MyNoteBrowsePage } from '../pages/MyNoteBrowse.page';
 
 // TODO: 記載する箇所の相談
 export type techNoteItem = {
@@ -37,8 +37,8 @@ export const AppRoute = () => {
             element: <MyNotePage />,
         },
         {
-            path: '/TechNoteDisplay',
-            element: <TechNoteDisplayPage data={data}/>,
+            path: '/myNoteBrowse',
+            element: <MyNoteBrowsePage data={data}/>,
         }
     ]);
 

@@ -8,19 +8,17 @@ type FlowChartProps = {
 }
 
 export const FlowChartBrowse: VFC<FlowChartProps> = (props) => {
-  const [selections, setSelections] = useState<Array<string>>([]);
-  const [selectedNodeId, setSelectedNodeId] = useState<string>('');
   // nodes,edgesについてもFlowChartコンポーネント内で管理する必要がある
   const [nodes, setNodes] = useState<Array<NodeData>>([]);
   const [edges, setEdges] = useState<Array<EdgeData>>([]);
 
-  const xxx = () => {
+  const setFlowChartData = () => {
     setNodes((props.attribute.flowChart?.nodes as Array<NodeData>).map(node => createNodeData(node)))
     setEdges(props.attribute.flowChart?.edges as Array<EdgeData>)
   }
 
   const createNodeData = (node: NodeData) => {
-    const newNode:NodeData = {
+    const newNode: NodeData = {
       id: node.id,
       width: 192,
       height: 96,
@@ -29,7 +27,7 @@ export const FlowChartBrowse: VFC<FlowChartProps> = (props) => {
     return newNode;
   }
 
-  const yyy = useEffect(xxx, [])
+  useEffect(setFlowChartData, [])
 
   return (
     <div style={{ backgroundColor: "#dcdcdc", borderRadius: "4px", width: "100%", height: "512px" }}>
@@ -47,7 +45,6 @@ export const FlowChartBrowse: VFC<FlowChartProps> = (props) => {
         direction="RIGHT"
         nodes={nodes}
         edges={edges}
-        selections={selections}
         disabled={true}
         node={
           <Node

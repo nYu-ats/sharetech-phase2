@@ -1,7 +1,7 @@
 import { VFC, ReactNode } from 'react';
 import { SimpleTemplate } from './Simple.template';
 
-export type TechNoteDisplayTemplateProps = {
+export type MyNoteBrowseTemplateProps = {
     header: ReactNode;
     tags: ReactNode;
     account: ReactNode;
@@ -17,7 +17,7 @@ export type TechNoteDisplayTemplateProps = {
     extra?: ReactNode;
 }
 
-export const TechNoteDisplayTemplate: VFC<TechNoteDisplayTemplateProps> = (props) => {
+export const MyNoteBrowseTemplate: VFC<MyNoteBrowseTemplateProps> = (props) => {
     return (
         <SimpleTemplate>
             <div style={{ textAlign: "center", fontSize: "3em" }}>

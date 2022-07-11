@@ -1,12 +1,7 @@
 import { VFC } from "react";
 import { BaseContentLinkContainerProps } from "./BaseContentLinkContainer";
-import { FloatButton } from "../../atoms/button/FloatButton";
-import { SquareNoteLink } from "../contentLink/SquareNoteLink";
-import { SimpleList } from "../../molecules/list/SimpleList";
 import { EdgeData, NodeData } from 'reaflow';
-import { Link } from "../../atoms/link/SimpleLink";
-import { FlowChartBrowse } from "../flowChart/FlowChartBrowse";
-import { ContentAttributeProps } from '../../../pages/MyNote.page';
+import { FlowChartBrowse } from "../flowChart/BrowseFlowChart";
 import { SimpleTable } from "../../molecules/table/SimpleTable";
 import { BrowseDataBar } from "../../molecules/dataBar/BrowseDataBar";
 

@@ -1,4 +1,4 @@
-import { TechNoteDisplayTemplate } from "../templates/TechNoteDisplay.template";
+import { MyNoteBrowseTemplate } from "../templates/MyNoteBrowse.template";
 import { VFC, ReactNode, useEffect, useState, createContext } from 'react';
 import { Header } from "../components/organisms/header/Header";
 import { TagLinkContainer } from "../components/organisms/noteLinkContainer/TagLinkContainer";
@@ -6,7 +6,6 @@ import { TechNoteAccountInfoContainer } from "../components/organisms/noteLinkCo
 import { TechNoteLinkIcon } from '../icons/TechNoteLinkIcon';
 import { Link } from '../components/atoms/link/SimpleLink';
 import { SimpleButton } from '../components/atoms/button/SimpleButton';
-import { TechNoteContentContainer } from "../components/organisms/noteLinkContainer/TechNoteContentContainer";
 import { MyNoteContentContainer } from "../components/organisms/noteLinkContainer/MyNoteContentContainer";
 import { ExtraNoteLinkContainer } from "../components/organisms/noteLinkContainer/ExtraNoteLinkContainer";
 import { techNoteItem } from "../routes/AppRoute";
@@ -17,7 +16,7 @@ type Props = {
 
 export const MyNoteContentBrowseContext = createContext<any>({});
 
-export const TechNoteDisplayPage: VFC<Props> = (props) => {
+export const MyNoteBrowsePage: VFC<Props> = (props) => {
 
     // dataがとってこれない。。
     // console.log(props.data);
@@ -170,7 +169,7 @@ export const TechNoteDisplayPage: VFC<Props> = (props) => {
     );
 
     return (
-        <TechNoteDisplayTemplate
+        <MyNoteBrowseTemplate
             header={header}
             tags={tags}
             account={account}
