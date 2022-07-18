@@ -8,31 +8,85 @@ import { Link } from '../components/atoms/link/SimpleLink';
 import { SimpleButton } from '../components/atoms/button/SimpleButton';
 import { MyNoteContentContainer } from "../components/organisms/noteLinkContainer/MyNoteContentContainer";
 import { ExtraNoteLinkContainer } from "../components/organisms/noteLinkContainer/ExtraNoteLinkContainer";
-import { techNoteItem } from "../routes/AppRoute";
+import axios from 'axios'
 
-type Props = {
-    data: techNoteItem
+type TechNoteItem = {
+    account: {
+        icon: string,
+        name: string,
+        date: string
+    }
+    contents: {
+        businessFlow: content,
+        toBeGoal: content,
+        taskOrganize: content,
+        solutionInfo: content,
+        result: content,
+        reference: string
+    }
+}
+
+type content = {
+    text: string,
+    reference: string[],
+    flowChart: {
+        nodes:
+        {
+            id: string,
+            text: string
+        }[],
+        edges:
+        {
+            id: string,
+            from: string,
+            to: string
+        }[]
+    },
+    table: { head: string[], data: [string[]] },
+    dataBar: { label: string, value: number }[]
+}
+
+const initialContent = {
+    text: '',
+    reference: [],
+    flowChart: null,
+    table: null,
+    dataBar: null
 }
 
 export const MyNoteContentBrowseContext = createContext<any>({});
 
-export const MyNoteBrowsePage: VFC<Props> = (props) => {
+export const MyNoteBrowsePage: VFC = () => {
+    const [data, setData] = useState<TechNoteItem>({} as TechNoteItem);
+    const [isLoading, setIsLoading] = useState(true);
+    const getData = async () => {
+        await axios.get('http://localhost:3001/data')
+            .then(res => {
+                setData(res.data)
+                setIsLoading(false)
+            }).catch(err => { //リクエストに失敗した場合
+                console.error(err)
+            })
+    };
+    useEffect(() => { getData(); }, []);
 
-    // dataがとってこれない。。
-    // console.log(props.data);
-
-    // console.log(props.data.account.name);
     const header = <Header />
     const tags = <TagLinkContainer
         tags={["タグ1", "タグ2"]} />
-    // FIXME 試し中
     const account = (
-        <MyNoteContentBrowseContext.Provider value={props.data}>
-            <TechNoteAccountInfoContainer
-                icon="icon.png"
-                name="シェアテック太郎"
-                date="{props.data.account.date}" />
-        </ MyNoteContentBrowseContext.Provider>
+        <div>
+            {isLoading ?
+                <TechNoteAccountInfoContainer
+                    icon="icon.png"
+                    name="シェアテック太郎"
+                    date="{props.data.account.date}" />
+                :
+                <TechNoteAccountInfoContainer
+                    icon={data.account.icon}
+                    name={data.account.name}
+                    date={data.account.date} />
+            }
+        </div>
     )
     const techNoteLink = <div style={{ margin: "0 1em" }}>
         <Link anchorTo="#"><TechNoteLinkIcon color='black' /></Link>
@@ -43,89 +97,33 @@ export const MyNoteBrowsePage: VFC<Props> = (props) => {
         <MyNoteContentContainer
             title="ビジネスフロー"
             introduction="自分自身や周囲の行動や振る舞いから気づいたポイントや行動フロー、感情を可視化しよう"
-            item={{
-                text: '',
-                reference: [],
-                flowChart: null,
-                table: null,
-                dataBar: null
-            }} />
+            item={isLoading ? initialContent : data.contents.businessFlow} />
     )
-
     const toBeGoal = (
         <MyNoteContentContainer
             title="ありたい姿・ゴール"
             introduction="優先度を設けて3つ以内で言語化しよう"
-            item={{
-                text: 'sample text',
-                reference: ['https://github.com'],
-                flowChart: {
-                    nodes: [
-                        {
-                            id: '1',
-                            text: 'ナンバーワン'
-                        },
-                        {
-                            id: '2',
-                            text: 'Two'
-                        }
-                    ],
-                    edges: [
-                        {
-                            id: '1-2',
-                            from: '1',
-                            to: '2'
-                        }
-                    ],
-                    // TODO flowChart内のtext消してよいか？onXXXの変更に追従するために用意したと思っているので、閲覧用には消してもよいと判断
-                },
-                table: { head: ['#', '名前'], data: [['1', '太郎'], ['2', '将之']] },
-                dataBar: [{ label: 'data1', value: 5 }, { label: 'data2', value: 2 }, { label: 'data3', value: 10 }]
-            }} />)
+            item={isLoading ? initialContent : data.contents.toBeGoal} />)
     const taskOrganize = (
         <MyNoteContentContainer
             title="課題の整理"
             introduction="ゴールへ向かうために、現状観察で出た意見・問題点から課題を整理しよう"
-            item={{
-                text: '',
-                reference: [],
-                flowChart: null,
-                table: null,
-                dataBar: null
-            }} />)
+            item={isLoading ? initialContent : data.contents.taskOrganize} />)
     const solutionInfo = (
         <MyNoteContentContainer
             title="ソリューション情報"
             introduction="ShareTech内もしくは、ホームページで検索した情報を整理しよう"
-            item={{
-                text: '',
-                reference: [],
-                flowChart: null,
-                table: null,
-                dataBar: null
-            }} />)
+            item={isLoading ? initialContent : data.contents.solutionInfo} />)
     const result = (
         <MyNoteContentContainer
             title="検証/結果"
             introduction="大切にしたいゴールを基準に検証結果を整理しよう"
-            item={{
-                text: '',
-                reference: [],
-                flowChart: null,
-                table: null,
-                dataBar: null
-            }} />)
+            item={isLoading ? initialContent : data.contents.result} />)
 
     const reference = (<MyNoteContentContainer
         title="参考情報"
         introduction=""
-        item={{
-            text: '',
-            reference: [],
-            flowChart: null,
-            table: null,
-            dataBar: null
-        }} />)
+        item={initialContent} />)
 
     const extra = (
         <ExtraNoteLinkContainer
