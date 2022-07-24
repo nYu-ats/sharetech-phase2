@@ -6,6 +6,7 @@ import { Link } from "../../atoms/link/SimpleLink";
 export type SquareNoteLinkProps = BaseContentLinkProps & {
     figure: string;
     tags: Array<string>;
+    href: string;
 }
 
 const SquareStyledNoteLink = styled.div`
@@ -25,7 +26,7 @@ export const SquareNoteLink: VFC<SquareNoteLinkProps> = (props) => {
 
     return (
         <SquareStyledNoteLink>
-            <Link anchorTo="#">
+            <Link anchorTo={props.href}>
                 <div style={{
                     display:"flex",
                     justifyContent:"left"}} >

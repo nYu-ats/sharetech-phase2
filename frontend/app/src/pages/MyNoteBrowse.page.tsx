@@ -1,5 +1,5 @@
 import { MyNoteBrowseTemplate } from "../templates/MyNoteBrowse.template";
-import { VFC, ReactNode, useEffect, useState, createContext } from 'react';
+import { VFC, useEffect, useState, createContext } from 'react';
 import { Header } from "../components/organisms/header/Header";
 import { TagLinkContainer } from "../components/organisms/noteLinkContainer/TagLinkContainer";
 import { TechNoteAccountInfoContainer } from "../components/organisms/noteLinkContainer/TechNoteAccountInfoContainer";
@@ -9,6 +9,7 @@ import { SimpleButton } from '../components/atoms/button/SimpleButton';
 import { MyNoteContentContainer } from "../components/organisms/noteLinkContainer/MyNoteContentContainer";
 import { ExtraNoteLinkContainer } from "../components/organisms/noteLinkContainer/ExtraNoteLinkContainer";
 import axios from 'axios'
+import { useParams } from "react-router-dom";
 
 type TechNoteItem = {
     account: {
@@ -59,8 +60,9 @@ export const MyNoteContentBrowseContext = createContext<any>({});
 export const MyNoteBrowsePage: VFC = () => {
     const [data, setData] = useState<TechNoteItem>({} as TechNoteItem);
     const [isLoading, setIsLoading] = useState(true);
-    const getData = async () => {
-        await axios.get('http://localhost:3001/data')
+    const { id } = useParams();
+    const getData = async (id: string) => {
+        await axios.get('http://localhost:3001/data/' + id)
             .then(res => {
                 setData(res.data)
                 setIsLoading(false)
@@ -68,7 +70,13 @@ export const MyNoteBrowsePage: VFC = () => {
                 console.error(err)
             })
     };
-    useEffect(() => { getData(); }, []);
+    useEffect(() => {
+        if (typeof id === "undefined") {
+            getData("");
+        } else {
+            getData(id);
+        }
+    }, []);
 
     const header = <Header />
     const tags = <TagLinkContainer

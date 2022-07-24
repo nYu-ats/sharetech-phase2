@@ -15,7 +15,7 @@ export const AppRoute = () => {
             element: <MyNotePage />,
         },
         {
-            path: '/myNoteBrowse',
+            path: '/myNoteBrowse/id=:id',
             element: <MyNoteBrowsePage />,
         }
     ]);
