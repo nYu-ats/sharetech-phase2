@@ -24,7 +24,7 @@ export const MyNoteMeta:VFC<MyNoteMetaProps> = () => {
 
     return (
         <div>
-            <div style={{marginBottom:"1em", display: context.mode==="VIEW" ? "none" : "block"}}>
+            <div style={{marginBottom:"1em", display: "block"}}>
                 <SimpleSlider
                 sliderValues={context.sliderValues}
                 active={context.myNoteMetaState.expose ? "expose" : "dispose"}
@@ -52,8 +52,8 @@ export const MyNoteMeta:VFC<MyNoteMetaProps> = () => {
             <div style={{marginBottom:"1em"}}>
                 <SimpleTextInput 
                 label="タイトル"
-                textChange={context.changeTitle}
-                disabled={context.mode==="VIEW"}/>
+                value={context.myNoteMetaState.title}
+                textChange={context.changeTitle}/>
             </div>
             <div style={{marginBottom:"1em"}}>
                 <VariableTextInput 
@@ -61,8 +61,7 @@ export const MyNoteMeta:VFC<MyNoteMetaProps> = () => {
                 tags={context.myNoteMetaState.tags} 
                 addTag={context.addTag} 
                 changeTag={context.changeTag} 
-                deleteTag={context.deleteTag}
-                disabled={context.mode==="VIEW"}/>
+                deleteTag={context.deleteTag}/>
             </div>
         </div>
     );

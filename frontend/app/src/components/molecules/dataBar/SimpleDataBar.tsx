@@ -2,7 +2,7 @@ import { VFC } from "react";
 import { BaseDataBarProps } from "./BaseDataBar";
 
 export type SimpleDataBarProps = BaseDataBarProps & {
-    label: number;
+    label: string;
 }
 
 export const SimpleDataBar: VFC<SimpleDataBarProps> = (props) => {
@@ -10,11 +10,10 @@ export const SimpleDataBar: VFC<SimpleDataBarProps> = (props) => {
 
     return (
         <div style={{display:"flex", justifyContent:"flex-start"}}>
-            <div>
+            <div style={{minWidth:'10rem'}}>
                 <p>{props.label}</p>
             </div>
-            <div style={{height:"1em", width:width, backgroundColor:"tomato", transition:".3s"}}>
-            </div>
+            <div style={{margin:'auto 0', height:"1em", width:width+'%', backgroundColor:"tomato", transition:".3s"}}></div>
         </div>
     );
 }

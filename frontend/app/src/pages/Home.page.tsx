@@ -1,144 +1,68 @@
 import { HomeTemplate } from "../templates/Home.template";
-import { VFC, ReactNode } from 'react';
+import { VFC, ReactNode, useState, useEffect } from 'react';
 import { MyNoteLinkContainer } from "../components/organisms/noteLinkContainer/MyNoteLinkContainer";
 import { AttentionNoteLinkContainer } from "../components/organisms/noteLinkContainer/AttentionNoteLinkContainer";
-import { NewsLinkContainer } from "../components/organisms/noteLinkContainer/NewsLinkContainer";
+import { NewsLinkContainer } from "../components/organisms/news/NewsLinkContainer";
+import ApiClient from '../functions/api/ApiClient';
+import { MyNoteItem } from "../components/organisms/noteLinkContainer/MyNoteLinkContainer";
+import { useNavigate } from "react-router-dom"
 
 export const HomePage: VFC = () => {
+    const navigate = useNavigate();
+
+    const [myNoteState, setMyNoteState] = useState<Array<MyNoteItem>>([]);
+    const [attentionTechNoteState, setAttentionTechNoteState] = useState<Array<MyNoteItem>>([]);
+
+    const initializeMyNote = async () => {
+        const contents = await ApiClient.getTechNoteList();
+        const myNoteContents = contents.map((item) => {
+            return {
+                id: Number.parseInt(item.id),
+                icon: item.icon,
+                title: item.title,
+                tags: item.tags
+            }
+        })
+        setMyNoteState(myNoteContents);
+    }
+
+    const initializeAttentionTechNote = async () => {
+        const contents = await ApiClient.getTechNoteList();
+        const myNoteContents = contents.map((item) => {
+            return {
+                id: Number.parseInt(item.id),
+                icon: item.icon,
+                title: item.title,
+                tags: item.tags
+            }
+        })
+        setAttentionTechNoteState(myNoteContents.slice(0, 5));
+    }
+
+    const addNewMyNote = async () => {
+        const id = await ApiClient.createEmptyTechNote();
+        navigate('/techNote/me/'+String(id))
+    }
+
+    useEffect(()=>{
+        initializeMyNote();
+        initializeAttentionTechNote();
+    }, [])
 
     const myNote = (
         <MyNoteLinkContainer
-            items={
-                [{
-                    id: 1,
-                    figure: "test.png",
-                    title: "test1",
-                    tags: ["test", "test2"]
-                },
-                {
-                    id: 2,
-                    figure: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    id: 2,
-                    figure: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    id: 2,
-                    figure: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    id: 2,
-                    figure: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    id: 2,
-                    figure: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    id: 2,
-                    figure: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    id: 2,
-                    figure: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    id: 2,
-                    figure: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    id: 2,
-                    figure: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    id: 2,
-                    figure: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    id: 2,
-                    figure: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                }
-                ]} />
+            items={myNoteState} 
+            addMyNote={addNewMyNote}/>
     )
 
     const attentionNote = (
         <AttentionNoteLinkContainer
-            items={
-                [{
-                    icon: "test.png",
-                    title: "test",
-                    tags: ["test", "test2"]
-                },
-                {
-                    icon: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    icon: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    icon: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                },
-                {
-                    icon: "test2.png",
-                    title: "test2",
-                    tags: ["test3", "test4"]
-                }
-                ]} />
+            items={attentionTechNoteState} />
     )
 
     const news = (
         <NewsLinkContainer
-            items={[
-                {
-                    title: "test1",
-                    overview: "test1"
-                },
-                {
-                    title: "test1",
-                    overview: "test1"
-                },
-                {
-                    title: "test1",
-                    overview: "test1"
-                },
-                {
-                    title: "test1",
-                    overview: "test1"
-                },
-                {
-                    title: "test1",
-                    overview: "test1"
-                },
-            ]} />
+            items={[]} />
     );
 
     return (

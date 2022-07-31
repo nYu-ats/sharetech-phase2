@@ -7,11 +7,12 @@ import { Link } from "../../atoms/link/SimpleLink";
 
 export type MyNoteLinkContainerProps = BaseContentLinkContainerProps & {
     items: Array<MyNoteItem>;
+    addMyNote?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-type MyNoteItem = {
+export type MyNoteItem = {
     id: number;
-    figure: string;
+    icon: number;
     title: string;
     tags: Array<string>;
 }
@@ -35,7 +36,8 @@ export const MyNoteLinkContainer: VFC<MyNoteLinkContainerProps> = (props) => {
                         height="64px"
                         fontSize="1.5em"
                         backgroundColor="white"
-                        hoverBgColor="white" />
+                        hoverBgColor="white" 
+                        onClick={props.addMyNote}/>
                 </div>
                 <SimpleList
                     isRow={true}
@@ -44,9 +46,9 @@ export const MyNoteLinkContainer: VFC<MyNoteLinkContainerProps> = (props) => {
                         return (
                             <div style={{ padding: "0 .5em 1em .5em", marginRight: "1em" }}>
                                 <SquareNoteLink
-                                    href={"/myNoteBrowse/id="+String(item.id)}
+                                    href={"/techNote/me/"+String(item.id)}
                                     title={item.title}
-                                    figure={item.figure}
+                                    icon={item.icon}
                                     tags={item.tags} />
                             </div>
                         );

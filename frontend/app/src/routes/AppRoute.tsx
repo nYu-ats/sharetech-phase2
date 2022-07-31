@@ -1,7 +1,7 @@
 import { useRoutes } from 'react-router-dom';
 import { HomePage } from '../pages/Home.page';
 import { MyNotePage } from '../pages/MyNote.page';
-import { MyNoteBrowsePage } from '../pages/MyNoteBrowse.page';
+import { TechNoteDetail } from '../pages/TechNoteDetail.page';
 
 export const AppRoute = () => {
 
@@ -11,12 +11,12 @@ export const AppRoute = () => {
             element: <HomePage />,
         },
         {
-            path: '/myNote',
+            path: '/techNote/me/:id',
             element: <MyNotePage />,
         },
         {
-            path: '/myNoteBrowse/id=:id',
-            element: <MyNoteBrowsePage />,
+            path: '/techNote/:id',
+            element: <TechNoteDetail />,
         }
     ]);
 

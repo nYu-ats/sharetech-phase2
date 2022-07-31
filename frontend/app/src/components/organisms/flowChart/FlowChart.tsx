@@ -1,11 +1,12 @@
-import React, { VFC, useState, ReactNode } from 'react';
-import { Canvas, hasLink, NodeData, EdgeData, Node, Edge, removeAndUpsertNodes, CanvasPosition, Label, Port, Position, PortData } from 'reaflow';
+import { VFC, useState, useEffect } from 'react';
+import { Canvas, hasLink, NodeData, EdgeData, Node, Edge, removeAndUpsertNodes, Label } from 'reaflow';
 import { ContentAttributeProps } from '../../../pages/MyNote.page';
 import { FloatButton } from '../../atoms/button/FloatButton';
+import { TechNoteContentAttributeProps } from '../../../pages/TechNoteDetail.page';
 
 type FlowChartProps = {
     readOnly?: boolean
-    attribute: ContentAttributeProps;
+    attribute: ContentAttributeProps | TechNoteContentAttributeProps;
     onAddNode: (attribute: ContentAttributeProps, node:NodeData) => void;
     onDeleteNode: (attribute: ContentAttributeProps, nodes:Array<NodeData>, edges:Array<EdgeData>) => void;
     onAddEdge: (attribute: ContentAttributeProps, edge:EdgeData) => void;
@@ -52,29 +53,37 @@ export const FlowChart:VFC<FlowChartProps> = (props) => {
           height:96
         }
     }
-
   }
+
+  useEffect(() => {
+    if(props.attribute.state.flowChart){
+      setNodes(props.attribute.state.flowChart.nodes);
+      setEdges(props.attribute.state.flowChart.edges);
+    }
+  }, [])
 
   return (
       <div style={{backgroundColor:"#dcdcdc", borderRadius:"4px", width:"100%", height:"512px"}}>
-        <div style={{width:"7em", padding:'.5em'}}>
-          <FloatButton 
-            label='+ カード' 
-            color='white' 
-            width='6em' 
-            height='24px' 
-            padding='0'
-            backgroundColor='pink' 
-            hoverBgColor='pink'
-            borderRadius='4px'
-            onClick={() => {
-              const newNode = createNewNode(props.attribute)
-              if (newNode){
-                setNodes([...nodes, newNode]);
-                props.onAddNode(props.attribute, newNode)
-              }
-              }}/>
+        {props.readOnly ? <div></div> : (
+          <div style={{width:"7em", padding:'.5em'}}>
+            <FloatButton 
+              label='+ カード' 
+              color='white' 
+              width='6em' 
+              height='24px' 
+              padding='0'
+              backgroundColor='pink' 
+              hoverBgColor='pink'
+              borderRadius='4px'
+              onClick={() => {
+                const newNode = createNewNode(props.attribute as ContentAttributeProps)
+                if (newNode){
+                  setNodes([...nodes, newNode]);
+                  props.onAddNode(props.attribute as ContentAttributeProps, newNode)
+                }
+                }}/>
         </div>
+        )}
         <style>
         {`
         .from {
@@ -90,6 +99,7 @@ export const FlowChart:VFC<FlowChartProps> = (props) => {
         nodes={nodes}
         edges={edges}
         selections={selections}
+        disabled={props.readOnly}
         node={
           <Node
           style={{fill:"white", stroke: '#00bfff', strokeWidth:2}}
@@ -109,7 +119,7 @@ export const FlowChart:VFC<FlowChartProps> = (props) => {
               node);
             setEdges(result.edges);
             setNodes(result.nodes);
-            props.onDeleteNode(props.attribute, result.nodes, result.edges)
+            props.onDeleteNode(props.attribute as ContentAttributeProps, result.nodes, result.edges)
             setSelections([]);
           }}
           onDragStart={()=>{
@@ -127,7 +137,7 @@ export const FlowChart:VFC<FlowChartProps> = (props) => {
               cols={10} 
               rows={2} 
               maxLength={50} 
-              wrap='soft' 
+              wrap='soft'
               style={{
                 width:"173px", 
                 height:"78px" , 
@@ -137,9 +147,9 @@ export const FlowChart:VFC<FlowChartProps> = (props) => {
                 border:"none", 
                 outline:"none", 
                 resize:"none"}}
-                onChange={(e)=>{
-                  const targetNodeId = e.target.parentElement?.parentElement?.getAttribute('id')?.split('-').pop();
-                  props.onTextChange(props.attribute, e.target.value, targetNodeId as string)}}/>
+              onChange={(e)=>{
+                const targetNodeId = e.target.parentElement?.parentElement?.getAttribute('id')?.split('-').pop();
+                props.onTextChange(props.attribute as ContentAttributeProps, e.target.value, targetNodeId as string)}}/>
             </foreignObject>
           </Node>
         }
@@ -151,7 +161,7 @@ export const FlowChart:VFC<FlowChartProps> = (props) => {
           onRemove={(e, edge) => {
             const newEdges = edges.filter(e => e.id !== `${edge.from}-${edge.to}`);
             setEdges(newEdges);
-            props.onDelEdge(props.attribute, newEdges)
+            props.onDelEdge(props.attribute as ContentAttributeProps, newEdges)
             setSelections([]);
           }}
           />
@@ -175,7 +185,7 @@ export const FlowChart:VFC<FlowChartProps> = (props) => {
               to: to.id,
             }
           ]);
-          props.onAddEdge(props.attribute, {id, from: from.id, to: to.id})
+          props.onAddEdge(props.attribute as ContentAttributeProps, {id, from: from.id, to: to.id})
         }}
         />
     </div>

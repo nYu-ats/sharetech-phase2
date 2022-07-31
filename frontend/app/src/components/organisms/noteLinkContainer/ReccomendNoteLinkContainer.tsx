@@ -1,22 +1,21 @@
 import { VFC } from "react";
 import { BaseContentLinkContainerProps } from "./BaseContentLinkContainer";
-import { SimpleList } from "../../molecules/list/SimpleList";
 import { Link } from "../../atoms/link/SimpleLink";
-import { ExtraNoteLink } from "../contentLink/ExtraNoteLink";
+import { SquareDetailNoteLink } from "../contentLink/SquareDetailNoteLink";
 
-export type AttentionNoteLinkContainerProps = BaseContentLinkContainerProps & {
-    items: Array<ExtraNoteItem>;
+export type RecommendNoteLinkContainerProps = BaseContentLinkContainerProps & {
+    items: Array<RecommendNoteItem>;
 }
 
-type ExtraNoteItem = {
+type RecommendNoteItem = {
     title: string;
     tags: Array<string>;
-    icon: string;
+    icon: number;
     name: string;
     date: string;
 }
 
-export const ExtraNoteLinkContainer: VFC<AttentionNoteLinkContainerProps> = (props) => {
+export const RecommendNoteLinkContainer: VFC<RecommendNoteLinkContainerProps> = (props) => {
     return (
         <div style={{ padding: "2em 0", width: "100%" }}>
             <h2>その他Tech note</h2>
@@ -30,7 +29,7 @@ export const ExtraNoteLinkContainer: VFC<AttentionNoteLinkContainerProps> = (pro
                 {props.items.map((item) => {
                     return (
                         <div style={{ marginRight: "2em", marginBottom: "1em" }}>
-                            <ExtraNoteLink
+                            <SquareDetailNoteLink
                                 title={item.title}
                                 tags={item.tags}
                                 icon={item.icon}

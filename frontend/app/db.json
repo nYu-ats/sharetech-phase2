@@ -1,146 +1,576 @@
 {
-    "data": [
-        {
-            "id": 1,
-            "account": {
-                "id": 1,
-                "icon": "test.png",
-                "name": "シェアテク太郎",
-                "date": "2021/8/1"
+  "techNote": [
+    {
+      "id": 1,
+      "created_at": "2030-12-31",
+      "account": {
+        "id": 1,
+        "icon": "",
+        "name": "test user"
+      },
+      "expose": true,
+      "icon": 2,
+      "title": "テスト",
+      "tags": [
+        "test",
+        "test2",
+        "mmmmmm"
+      ],
+      "data": {
+        "businessFlow": {
+          "text": "sample texttttt\nテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト",
+          "reference": [
+            "http://localhost:3000/techNote/2",
+            "http://localhost:3000/techNote/5"
+          ],
+          "flowChart": null,
+          "table": {
+            "head": [
+              "#",
+              "名前",
+              "ttttt"
+            ],
+            "data": [
+              [
+                "1",
+                "太郎",
+                "ssss"
+              ],
+              [
+                "2",
+                "将之",
+                "aaaaa"
+              ]
+            ]
+          },
+          "dataBar": [
+            {
+              "label": "data1",
+              "value": 5
             },
-            "contents": {
-                "businessFlow": {
-                    "text": "sample text",
-                    "reference": [
-                        "https://github.com"
-                    ],
-                    "flowChart": {
-                        "nodes": [
-                            {
-                                "id": "1",
-                                "text": "ナンバーワン"
-                            },
-                            {
-                                "id": "2",
-                                "text": "Two"
-                            }
-                        ],
-                        "edges": [
-                            {
-                                "id": "1-2",
-                                "from": "1",
-                                "to": "2"
-                            }
-                        ]
-                    },
-                    "table": {
-                        "head": [
-                            "#",
-                            "名前"
-                        ],
-                        "data": [
-                            [
-                                "1",
-                                "太郎"
-                            ],
-                            [
-                                "2",
-                                "将之"
-                            ]
-                        ]
-                    },
-                    "dataBar": [
-                        {
-                            "label": "data1",
-                            "value": 5
-                        },
-                        {
-                            "label": "data2",
-                            "value": 2
-                        },
-                        {
-                            "label": "data3",
-                            "value": 10
-                        }
-                    ]
-                },
-                "toBeGoal": {},
-                "taskOrganize": {},
-                "solutionInfo": {},
-                "result": {},
-                "reference": {}
+            {
+              "label": "data2",
+              "value": 2
+            },
+            {
+              "label": "data3",
+              "value": 100
+            },
+            {
+              "label": "tttttt",
+              "value": 49
             }
+          ]
         },
-        {
-            "id": 2,
-            "account": {
-                "id": 1,
-                "icon": "test.png",
-                "name": "シェアテク太郎",
-                "date": "2022/8/1"
+        "goal": {},
+        "problem": {},
+        "solution": {},
+        "result": {}
+      }
+    },
+    {
+      "id": 2,
+      "expose": true,
+      "icon": 0,
+      "tags": [
+        "test",
+        "test2"
+      ],
+      "title": "テスト",
+      "account": {
+        "id": 1,
+        "icon": "test.png",
+        "name": "シェアテク太郎",
+        "date": "2022/8/1"
+      },
+      "contents": {
+        "businessFlow": {},
+        "toBeGoal": {
+          "text": "sample text",
+          "reference": [
+            "https://github.com"
+          ],
+          "flowChart": {
+            "nodes": [
+              {
+                "id": "1",
+                "text": "ナンバーワン"
+              },
+              {
+                "id": "2",
+                "text": "Two"
+              }
+            ],
+            "edges": [
+              {
+                "id": "1-2",
+                "from": "1",
+                "to": "2"
+              }
+            ]
+          },
+          "table": {
+            "head": [
+              "#",
+              "名前"
+            ],
+            "data": [
+              [
+                "1",
+                "太郎"
+              ],
+              [
+                "2",
+                "将之"
+              ]
+            ]
+          },
+          "dataBar": [
+            {
+              "label": "data1",
+              "value": 5
             },
-            "contents": {
-                "businessFlow": {},
-                "toBeGoal": {
-                    "text": "sample text",
-                    "reference": [
-                        "https://github.com"
-                    ],
-                    "flowChart": {
-                        "nodes": [
-                            {
-                                "id": "1",
-                                "text": "ナンバーワン"
-                            },
-                            {
-                                "id": "2",
-                                "text": "Two"
-                            }
-                        ],
-                        "edges": [
-                            {
-                                "id": "1-2",
-                                "from": "1",
-                                "to": "2"
-                            }
-                        ]
-                    },
-                    "table": {
-                        "head": [
-                            "#",
-                            "名前"
-                        ],
-                        "data": [
-                            [
-                                "1",
-                                "太郎"
-                            ],
-                            [
-                                "2",
-                                "将之"
-                            ]
-                        ]
-                    },
-                    "dataBar": [
-                        {
-                            "label": "data1",
-                            "value": 5
-                        },
-                        {
-                            "label": "data2",
-                            "value": 2
-                        },
-                        {
-                            "label": "data3",
-                            "value": 10
-                        }
-                    ]
-                },
-                "taskOrganize": {},
-                "solutionInfo": {},
-                "result": {},
-                "reference": {}
+            {
+              "label": "data2",
+              "value": 2
+            },
+            {
+              "label": "data3",
+              "value": 10
             }
+          ]
+        },
+        "taskOrganize": {},
+        "solutionInfo": {},
+        "result": {},
+        "reference": {}
+      }
+    },
+    {
+      "id": 3,
+      "expose": true,
+      "icon": 0,
+      "tags": [
+        "test",
+        "test2"
+      ],
+      "title": "テスト",
+      "account": {
+        "id": 1,
+        "icon": "test.png",
+        "name": "シェアテク太郎",
+        "date": "2022/8/1"
+      },
+      "contents": {
+        "businessFlow": {},
+        "toBeGoal": {
+          "text": "sample text",
+          "reference": [
+            "https://github.com"
+          ],
+          "flowChart": {
+            "nodes": [
+              {
+                "id": "1",
+                "text": "ナンバーワン"
+              },
+              {
+                "id": "2",
+                "text": "Two"
+              }
+            ],
+            "edges": [
+              {
+                "id": "1-2",
+                "from": "1",
+                "to": "2"
+              }
+            ]
+          },
+          "table": {
+            "head": [
+              "#",
+              "名前"
+            ],
+            "data": [
+              [
+                "1",
+                "太郎"
+              ],
+              [
+                "2",
+                "将之"
+              ]
+            ]
+          },
+          "dataBar": [
+            {
+              "label": "data1",
+              "value": 5
+            },
+            {
+              "label": "data2",
+              "value": 2
+            },
+            {
+              "label": "data3",
+              "value": 10
+            }
+          ]
+        },
+        "taskOrganize": {},
+        "solutionInfo": {},
+        "result": {},
+        "reference": {}
+      }
+    },
+    {
+      "id": 4,
+      "expose": true,
+      "icon": 0,
+      "tags": [
+        "test",
+        "test2"
+      ],
+      "title": "テスト",
+      "account": {
+        "id": 1,
+        "icon": "test.png",
+        "name": "シェアテク太郎",
+        "date": "2022/8/1"
+      },
+      "contents": {
+        "businessFlow": {},
+        "toBeGoal": {
+          "text": "sample text",
+          "reference": [
+            "https://github.com"
+          ],
+          "flowChart": {
+            "nodes": [
+              {
+                "id": "1",
+                "text": "ナンバーワン"
+              },
+              {
+                "id": "2",
+                "text": "Two"
+              }
+            ],
+            "edges": [
+              {
+                "id": "1-2",
+                "from": "1",
+                "to": "2"
+              }
+            ]
+          },
+          "table": {
+            "head": [
+              "#",
+              "名前"
+            ],
+            "data": [
+              [
+                "1",
+                "太郎"
+              ],
+              [
+                "2",
+                "将之"
+              ]
+            ]
+          },
+          "dataBar": [
+            {
+              "label": "data1",
+              "value": 5
+            },
+            {
+              "label": "data2",
+              "value": 2
+            },
+            {
+              "label": "data3",
+              "value": 10
+            }
+          ]
+        },
+        "taskOrganize": {},
+        "solutionInfo": {},
+        "result": {},
+        "reference": {}
+      }
+    },
+    {
+      "id": 5,
+      "expose": true,
+      "icon": 0,
+      "tags": [
+        "test",
+        "test2"
+      ],
+      "title": "テスト",
+      "account": {
+        "id": 1,
+        "icon": "test.png",
+        "name": "シェアテク太郎",
+        "date": "2022/8/1"
+      },
+      "contents": {
+        "businessFlow": {},
+        "toBeGoal": {
+          "text": "sample text",
+          "reference": [
+            "https://github.com"
+          ],
+          "flowChart": {
+            "nodes": [
+              {
+                "id": "1",
+                "text": "ナンバーワン"
+              },
+              {
+                "id": "2",
+                "text": "Two"
+              }
+            ],
+            "edges": [
+              {
+                "id": "1-2",
+                "from": "1",
+                "to": "2"
+              }
+            ]
+          },
+          "table": {
+            "head": [
+              "#",
+              "名前"
+            ],
+            "data": [
+              [
+                "1",
+                "太郎"
+              ],
+              [
+                "2",
+                "将之"
+              ]
+            ]
+          },
+          "dataBar": [
+            {
+              "label": "data1",
+              "value": 5
+            },
+            {
+              "label": "data2",
+              "value": 2
+            },
+            {
+              "label": "data3",
+              "value": 10
+            }
+          ]
+        },
+        "taskOrganize": {},
+        "solutionInfo": {},
+        "result": {},
+        "reference": {}
+      }
+    },
+    {
+      "id": 6,
+      "created_at": "2030-12-31",
+      "account": {
+        "id": 1,
+        "icon": "",
+        "name": "test user"
+      },
+      "expose": false,
+      "icon": 4,
+      "title": "ideaideaideaidea",
+      "tags": [
+        "tttttt"
+      ],
+      "data": {
+        "businessFlow": {
+          "text": "",
+          "reference": [],
+          "flowChart": {
+            "nodes": [
+              {
+                "id": "1",
+                "width": 192,
+                "height": 96,
+                "text": null
+              },
+              {
+                "id": "2",
+                "width": 192,
+                "height": 96,
+                "text": null
+              }
+            ],
+            "edges": [
+              {
+                "id": "1-2",
+                "from": "1",
+                "to": "2"
+              }
+            ],
+            "text": [
+              {
+                "nodeId": "1",
+                "text": "business flow"
+              },
+              {
+                "nodeId": "2",
+                "text": "business flow"
+              }
+            ]
+          },
+          "table": null,
+          "dataBar": null
+        },
+        "goal": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        },
+        "problem": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        },
+        "solution": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        },
+        "result": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
         }
-    ]
+      }
+    },
+    {
+      "id": 7,
+      "created_at": "2030-12-31",
+      "account": {
+        "id": 1,
+        "icon": "",
+        "name": "test user"
+      },
+      "expose": false,
+      "icon": 9,
+      "title": "title",
+      "tags": [
+        "eeeeeeeee",
+        "gggg"
+      ],
+      "data": {
+        "businessFlow": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        },
+        "goal": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        },
+        "problem": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        },
+        "solution": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        },
+        "result": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        }
+      }
+    },
+    {
+      "id": 8,
+      "created_at": "2030-12-31",
+      "account": {
+        "id": 1,
+        "icon": "",
+        "name": "test user"
+      },
+      "expose": true,
+      "icon": 8,
+      "title": "titletitletitle",
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3",
+        "tag4"
+      ],
+      "data": {
+        "businessFlow": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        },
+        "goal": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        },
+        "problem": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        },
+        "solution": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        },
+        "result": {
+          "text": "",
+          "reference": null,
+          "flowChart": null,
+          "table": null,
+          "dataBar": null
+        }
+      }
+    }
+  ]
 }

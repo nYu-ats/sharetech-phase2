@@ -34,14 +34,13 @@ export const Header:VFC = () => {
                 }}>
                     <div style={{display:"flex"}}>
                         <div>
-                            <Link anchorTo="#">
+                            <Link anchorTo="/home">
                                 <OutlinedHomeIcon color='white'/>
                             </Link>
                         </div>
                     </div>
                 </div>
                 <div style={{width:"70%", textAlign:"center"}}>
-                    <Link anchorTo="#"><img src={Logo} style={{height: "60px"}}/></Link>
                 </div>
                 <div style={{
                     display: "flex",
