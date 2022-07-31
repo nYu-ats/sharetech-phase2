@@ -10,7 +10,8 @@ export type AttentionNoteLinkContainerProps = BaseContentLinkContainerProps & {
 }
 
 type AttentionNoteItem = {
-    icon: string;
+    id: number,
+    icon: number;
     title: string;
     tags: Array<string>;
 }
@@ -35,6 +36,7 @@ export const AttentionNoteLinkContainer: VFC<AttentionNoteLinkContainerProps> = 
                         return (
                             <div style={{padding:"0 .5em 1em .5em"}}>
                                 <RectAngleNoteLink 
+                                href={"/techNote/"+String(item.id)}
                                 title={item.title}
                                 icon={item.icon}
                                 tags={item.tags}/>

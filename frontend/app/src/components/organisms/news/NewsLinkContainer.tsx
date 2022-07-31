@@ -1,10 +1,8 @@
 import { VFC } from "react";
-import { BaseContentLinkContainerProps } from "./BaseContentLinkContainer";
-import { SimpleList } from "../../molecules/list/SimpleList";
 import { Link } from "../../atoms/link/SimpleLink";
 import { NewsLink } from "../contentLink/NewsLink";
 
-export type AttentionNoteLinkContainerProps = BaseContentLinkContainerProps & {
+export type AttentionNoteLinkContainerProps = {
     items:Array<NewsItem>;
 }
 

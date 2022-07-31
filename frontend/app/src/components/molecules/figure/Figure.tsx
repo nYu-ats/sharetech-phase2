@@ -5,7 +5,7 @@ export type FigureProps = {
     title: string;
     icon: ReactNode;
     content: ReactNode;
-    onDelete: React.MouseEventHandler<HTMLElement>;
+    onDelete?: React.MouseEventHandler<HTMLElement>;
 }
 
 export const Figure:VFC<FigureProps> = (props) => {
@@ -14,9 +14,11 @@ export const Figure:VFC<FigureProps> = (props) => {
         <div style={{display:"flex"}}>
             {props.icon}
             <div style={{color:"#666", fontWeight:"bold"}}>{props.title}</div>
-            <div style={{marginLeft:"1em", cursor:"pointer"}} onClick={props.onDelete}>
-                <OutlinedDeleteIcon hoverColor='red'/>
-            </div>
+            {props.onDelete ? (
+                <div style={{marginLeft:"1em", cursor:"pointer"}} onClick={props.onDelete}>
+                    <OutlinedDeleteIcon hoverColor='red'/>
+                </div>
+            ) : null}
         </div>
         {props.content}
     </div>

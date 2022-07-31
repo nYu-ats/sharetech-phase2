@@ -2,10 +2,12 @@ import { VFC } from "react";
 import styled from 'styled-components';
 import { BaseContentLinkProps } from "./BaseContentLink";
 import { Link } from "../../atoms/link/SimpleLink";
+import { IconNumbering } from '../../../icons/IconNumbering';
 
 export type RectAngleNoteLinkProps = BaseContentLinkProps & {
-    icon: string;
+    icon: number;
     tags: Array<string>;
+    href: string;
 }
 
 const RectAngleStyledNoteLink = styled.div`
@@ -25,7 +27,7 @@ export const RectAngleNoteLink: VFC<RectAngleNoteLinkProps> = (props) => {
 
     return (
         <RectAngleStyledNoteLink>
-            <Link anchorTo="#">
+            <Link anchorTo={props.href}>
                 <div style={{
                     display:"flex",
                     justifyContent:"left"}} >
@@ -47,7 +49,7 @@ export const RectAngleNoteLink: VFC<RectAngleNoteLinkProps> = (props) => {
                     justifyContent:"left",
                     padding:"0 1em"}}>
                     <div style={{height:"100%", margin:"0 .3em", textAlign:"left"}}>
-                        <img src={props.icon} style={{height:"100%"}}/>
+                        {IconNumbering[props.icon]}
                     </div>
                     <div style={{width:"80%", margin:"0 .3em", fontWeight:"bold", textAlign:"left"}}>
                         {props.title}

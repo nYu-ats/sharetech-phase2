@@ -2,10 +2,12 @@ import { VFC } from "react";
 import styled from 'styled-components';
 import { BaseContentLinkProps } from "./BaseContentLink";
 import { Link } from "../../atoms/link/SimpleLink";
+import { IconNumbering } from '../../../icons/IconNumbering';
 
 export type SquareNoteLinkProps = BaseContentLinkProps & {
-    figure: string;
+    icon: number;
     tags: Array<string>;
+    href: string;
 }
 
 const SquareStyledNoteLink = styled.div`
@@ -25,10 +27,11 @@ export const SquareNoteLink: VFC<SquareNoteLinkProps> = (props) => {
 
     return (
         <SquareStyledNoteLink>
-            <Link anchorTo="#">
+            <Link anchorTo={props.href}>
                 <div style={{
                     display:"flex",
-                    justifyContent:"left"}} >
+                    justifyContent:"left",
+                    overflow:'hidden'}} >
                     {props.tags.map((tag) => {
                         return(
                             <div style={{
@@ -42,8 +45,8 @@ export const SquareNoteLink: VFC<SquareNoteLinkProps> = (props) => {
                         );
                     })}
                 </div>
-                <div style={{width:"100%", height:"40%", margin:"0 .3em", textAlign:"center"}}>
-                    <img src={props.figure} style={{width:"100%"}}/>
+                <div style={{width:"100%", height:"40%", margin:"0", textAlign:"center"}}>
+                    {IconNumbering[props.icon]}
                 </div>
                 <div style={{margin:"0 .3em", fontWeight:"bold"}}>
                     {props.title}

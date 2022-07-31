@@ -6,51 +6,55 @@ import { SimpleList } from "../../molecules/list/SimpleList";
 import { Link } from "../../atoms/link/SimpleLink";
 
 export type MyNoteLinkContainerProps = BaseContentLinkContainerProps & {
-    items:Array<MyNoteItem>;
+    items: Array<MyNoteItem>;
+    addMyNote?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-type MyNoteItem = {
-    figure: string;
+export type MyNoteItem = {
+    id: number;
+    icon: number;
     title: string;
     tags: Array<string>;
 }
 
 export const MyNoteLinkContainer: VFC<MyNoteLinkContainerProps> = (props) => {
     return (
-        <div style={{padding:"2em 0"}}>
+        <div style={{ padding: "2em 0" }}>
             <h2>My Tech Note</h2>
             <div style={{
-                display:"flex",
-                justifyContent:"left",
-                padding:"1em 2em"
+                display: "flex",
+                justifyContent: "left",
+                padding: "1em 2em"
             }}>
-                <div style={{marginRight:"3em"}}>
+                <div style={{ marginRight: "3em" }}>
                     <FloatButton
-                    action="button"
-                    label="+" 
-                    color="#666"
-                    borderRadius="16px"
-                    width="64px"
-                    height="64px"
-                    fontSize="1.5em"
-                    backgroundColor="white"
-                    hoverBgColor="white"/>
+                        action="button"
+                        label="+"
+                        color="#666"
+                        borderRadius="16px"
+                        width="64px"
+                        height="64px"
+                        fontSize="1.5em"
+                        backgroundColor="white"
+                        hoverBgColor="white" 
+                        onClick={props.addMyNote}/>
                 </div>
-                <SimpleList 
-                isRow={true}
-                justifyContent="left"
-                items={props.items.map((item) => {
-                    return (
-                        <div style={{padding:"0 .5em 1em .5em", marginRight:"1em"}}>
-                            <SquareNoteLink 
-                            title={item.title}
-                            figure={item.figure}
-                            tags={item.tags}/>
-                        </div>
-                    );
-                })}/>
+                <SimpleList
+                    isRow={true}
+                    justifyContent="left"
+                    items={props.items.map((item) => {
+                        return (
+                            <div style={{ padding: "0 .5em 1em .5em", marginRight: "1em" }}>
+                                <SquareNoteLink
+                                    href={"/techNote/me/"+String(item.id)}
+                                    title={item.title}
+                                    icon={item.icon}
+                                    tags={item.tags} />
+                            </div>
+                        );
+                    })} />
             </div>
-            <div style={{textAlign:"right"}}>
+            <div style={{ textAlign: "right" }}>
                 <Link anchorTo="#">さらに表示する</Link>
             </div>
         </div>

@@ -1,9 +1,13 @@
-import React, { VFC, useState, createContext, useReducer, useMemo } from 'react';
+import React, { VFC, useState, createContext, useReducer, useEffect } from 'react';
 import { MyNoteTemplate } from '../templates/myNote.template';
 import { FloatButton } from '../components/atoms/button/FloatButton';
 import { MyNoteMeta } from '../components/organisms/myNote/MyNoteMeta';
 import { MyNoteContent } from '../components/organisms/myNote/MyNoteContent';
 import { EdgeData, NodeData } from 'reaflow';
+import { useLocation } from 'react-router-dom';
+import ApiClient, { TechNoteContent as TechNoteResponse } from '../functions/api/ApiClient';
+import { TechNoteMeta } from '../components/organisms/techNote/TechNoteMeta';
+import { TechNoteContent } from "../components/organisms/techNote/TechNoteContent";
 
 type Mode = "EDIT" | "VIEW"
 
@@ -41,9 +45,11 @@ type DataBarState = {
 type MyNoteMetaAction = {type:"EXPOSE", value:boolean} 
                     | {type:"ICON", value:number}
                     | {type:"TITLE", value:string} 
-                    | {type:"TAG", value:Array<string>};
+                    | {type:"TAG", value:Array<string>}
+                    | {type:"INITIALIZE", value:MyNoteMetaStateProps} ;
 
 export type MyNoteContentAction = {type: "TEXT", value:string}
+                        | {type:"INITIALIZE", value:MyNoteContentStateProps} 
                         | {type:"DESCRIPTION", value:string}
                         | {type:"REFERENCE", operation:"ADDREF", value:Array<string>}
                         | {type:"REFERENCE", operation:"DELREF", value:Array<string>}
@@ -111,6 +117,8 @@ const myNoteMetaReducer = (state: MyNoteMetaStateProps, action:MyNoteMetaAction)
             return {...state, title: action.value};
         case "TAG":
             return {...state, tags: action.value};
+        case "INITIALIZE":
+            return {...action.value};
         default:
             return state;
     }
@@ -118,6 +126,8 @@ const myNoteMetaReducer = (state: MyNoteMetaStateProps, action:MyNoteMetaAction)
 
 const myNoteContentReducer = (state: MyNoteContentStateProps, action: MyNoteContentAction) => {
     switch(action.type){
+        case "INITIALIZE":
+            return {...action.value};
         case "DESCRIPTION":
             return {...state, text: action.value}
         case "REFERENCE":
@@ -189,6 +199,8 @@ export const MyNoteMetaContext = createContext<any>({});
 export const MyNoteContentContext = createContext<any>({});
 
 export const MyNotePage:VFC = () => {
+    const location = useLocation();
+
     const [mode, setMode] = useState<Mode>("VIEW");
     const [myNoteMetaState, myNoteDispatch] = useReducer(myNoteMetaReducer, initialMyNoteMetaState);
     const [businessFlowState, businessFlowDispatch] = useReducer(myNoteContentReducer, initialMyNoteContentState);
@@ -222,9 +234,23 @@ export const MyNotePage:VFC = () => {
     // 編集・閲覧モードの切り替え
     const toggleMode = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
+        updateMyNote();
         const next = mode === "VIEW" ? "EDIT" : "VIEW";
         const validTags = myNoteMetaState.tags.filter((item) => item)
-        myNoteDispatch({type:"TAG", value: validTags});
+        if(next==='VIEW'){
+            myNoteDispatch({type:'INITIALIZE', value:{expose: myNoteMetaState.expose, icon: myNoteMetaState.icon, title: myNoteMetaState.title, tags:myNoteMetaState.tags}})
+            businessFlowDispatch({type:'INITIALIZE', value: convertToReadOnlyContent(businessFlowState)})
+            goalDispatch({type:'INITIALIZE', value: convertToReadOnlyContent(goalState)})
+            problemDispatch({type:'INITIALIZE', value: convertToReadOnlyContent(problemState)})
+            solutionDispatch({type:'INITIALIZE', value: convertToReadOnlyContent(solutionState)})
+            resultDispatch({type:'INITIALIZE', value: convertToReadOnlyContent(resultState)})
+        }else if(next==='EDIT'){
+            removeTextFromNodes(businessFlowState);
+            removeTextFromNodes(goalState);
+            removeTextFromNodes(problemState);
+            removeTextFromNodes(solutionState);
+            removeTextFromNodes(resultState);
+        }
         setMode(next);
     };
     
@@ -495,49 +521,142 @@ export const MyNotePage:VFC = () => {
         valueChange
     }
 
+    const initialize = async () => {
+        const index = location.pathname.split('/').slice(-1)[0];
+        const content = await ApiClient.getTechNote(index) as unknown as TechNoteResponse;
+        myNoteDispatch({type:'INITIALIZE', value:{expose: content.expose, icon: content.icon, title: content.title, tags:content.tags}})
+        businessFlowDispatch({type:'INITIALIZE', value: convertToReadOnlyContent(content.data.businessFlow)})
+        goalDispatch({type:'INITIALIZE', value: convertToReadOnlyContent(content.data.goal)})
+        problemDispatch({type:'INITIALIZE', value: convertToReadOnlyContent(content.data.problem)})
+        solutionDispatch({type:'INITIALIZE', value: convertToReadOnlyContent(content.data.solution)})
+        resultDispatch({type:'INITIALIZE', value: convertToReadOnlyContent(content.data.result)})
+    }
+
+    const convertToReadOnlyContent = (content: MyNoteContentStateProps) => {
+        const flowChartTexts = content.flowChart?.text;
+        if(flowChartTexts){
+            if(content.flowChart?.nodes){
+                content.flowChart.nodes.forEach((item) => {
+                    const targetText = flowChartTexts.filter(target => target.nodeId == item.id);
+                    if(targetText.length > 0){
+                        item.text = targetText[0].text;
+                    }
+                })
+            }
+        }
+        return content;
+    }
+
+    const removeTextFromNodes = (content: MyNoteContentStateProps) => {
+        if(content.flowChart?.nodes){
+            content.flowChart?.nodes.forEach((item) => {
+                item.text = null
+            })
+        }
+    }
+
+    const updateMyNote = async () => {
+        const index = location.pathname.split('/').slice(-1)[0];
+        await ApiClient.updateTechNote(
+            index,
+            {
+                id:index,
+                created_at: '2030-12-31',
+                account: {
+                    id: 1,
+                    icon: '',
+                    name: 'test user'
+                },
+                ...myNoteMetaState,
+                data: {
+                    businessFlow: {...businessFlowState},
+                    goal: {...goalState},
+                    problem: {...problemState},
+                    solution: {...solutionState},
+                    result: {...resultState}
+                }
+            }
+        )
+    }
+
+    useEffect(()=>{
+        initialize();
+    }, [])
+
     const myNoteMeta = (
         <MyNoteMetaContext.Provider value={myNoteMetaValue}>
-            <MyNoteMeta />
+            {mode=='EDIT' ? 
+            <MyNoteMeta /> : 
+            <TechNoteMeta
+            expose={myNoteMetaState.expose}
+            icon={myNoteMetaState.icon}
+            title={myNoteMetaState.title}
+            tags={myNoteMetaState.tags}/>}
         </MyNoteMetaContext.Provider>
     );
     const businessFlow = (
         <MyNoteContentContext.Provider value={myNoteContentValue}>
+            {mode=='EDIT' ? 
             <MyNoteContent 
             contentName='ビジネスフロー' 
             contentDiscription='自分自身や周囲の行動、振る舞いから気づいたポイントや行動を可視化しよう'
-            attribute={businessFlowAttr}/>
+            attribute={businessFlowAttr}/> : 
+            <TechNoteContent
+            contentName='ビジネスフロー'
+            attribute={{state: businessFlowAttr.state, action:null}}/>
+            }
         </MyNoteContentContext.Provider>
     );
     const goal = (
         <MyNoteContentContext.Provider value={myNoteContentValue}>
+            {mode=='EDIT' ? 
             <MyNoteContent 
             contentName='ありたい姿・ゴール' 
             contentDiscription='ゴールへ向かうために、現状観察で出た意見・問題点から課題を整理しよう'
-            attribute={goalAttr}/>
+            attribute={goalAttr}/> : 
+            <TechNoteContent
+            contentName='ありたい姿・ゴール'
+            attribute={{state: goalAttr.state, action:null}}/>
+            }
         </MyNoteContentContext.Provider>
     );
     const problem = (
         <MyNoteContentContext.Provider value={myNoteContentValue}>
+            {mode=='EDIT' ? 
             <MyNoteContent 
             contentName='課題の整理' 
             contentDiscription='ゴールへ向かうために、現状観察で出た意見・問題点から課題を整理しよう'
-            attribute={problemAttr}/>
+            attribute={problemAttr}/> : 
+            <TechNoteContent
+            contentName='課題の整理'
+            attribute={{state: problemAttr.state, action:null}}/>
+            }
         </MyNoteContentContext.Provider>
     );
     const solution = (
         <MyNoteContentContext.Provider value={myNoteContentValue}>
+            {mode=='EDIT' ? 
             <MyNoteContent 
             contentName='ソリューション情報' 
             contentDiscription='Share Tech内もしくは、ホームページで検索した情報を整理しよう'
-            attribute={solutionAttr}/>
+            attribute={solutionAttr}/> : 
+            <TechNoteContent
+            contentName='ソリューション情報'
+            attribute={{state: solutionAttr.state, action:null}}/>
+            }
         </MyNoteContentContext.Provider>
     );
     const result = (
         <MyNoteContentContext.Provider value={myNoteContentValue}>
+            {mode=='EDIT' ? 
             <MyNoteContent 
-            contentName='検証/結果' 
+            contentName='検証・結果' 
             contentDiscription='大切にしたいゴールを基準に検証結果を整理しよう'
-            attribute={resultAttr}/>
+            attribute={resultAttr}/> : 
+            <TechNoteContent
+            contentName='検証・結果'
+            attribute={{state: resultAttr.state, action:null}}/>
+            }
         </MyNoteContentContext.Provider>
     );
 
@@ -546,7 +665,6 @@ export const MyNotePage:VFC = () => {
     const switchToViewBtn = (
         <FloatButton onClick={toggleMode} label="確定" width="64px" height="64px" borderRadius='50%' backgroundColor='pink' color='#666' hoverBgColor='pink'/>);
     
-    console.log(goalState)
     return (
         <MyNoteTemplate 
         myNoteMeta={myNoteMeta}
