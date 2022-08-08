@@ -12,8 +12,8 @@ export type SquareNoteLinkProps = BaseContentLinkProps & {
 
 const SquareStyledNoteLink = styled.div`
 border-radius: 16px;
-width: 128px;
-height: 128px;
+width: 160px;
+height: 160px;
 border: none;
 transition: .3s;
 background-color: white;

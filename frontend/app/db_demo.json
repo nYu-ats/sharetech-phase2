@@ -10,15 +10,13 @@
       },
       "expose": true,
       "icon": 2,
-      "title": "テスト",
+      "title": "部門横断コミュニケーションデザイン",
       "tags": [
-        "test",
-        "test2",
-        "mmmm"
+        "検討中"
       ],
       "data": {
         "businessFlow": {
-          "text": "sample texttttt\nテストテストあテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト",
+          "text": "sample texttttt\nテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト",
           "reference": [
             "http://localhost:3000/techNote/2",
             "http://localhost:3000/techNote/5"
@@ -62,97 +60,9 @@
             }
           ]
         },
-        "goal": {
-          "table": {
-            "head": [
-              "#",
-              "タスク",
-              "完了条件"
-            ],
-            "data": [
-              [
-                "1",
-                "～～～を準備する",
-                "～～～の作成条件を満たしていること"
-              ],
-              [
-                "2",
-                "",
-                ""
-              ],
-              [
-                "3",
-                "",
-                ""
-              ],
-              [
-                "4",
-                "",
-                ""
-              ]
-            ]
-          },
-          "reference": [
-            "うううううう"
-          ]
-        },
-        "problem": {
-          "flowChart": {
-            "nodes": [
-              {
-                "id": "1",
-                "width": 192,
-                "height": 96,
-                "text": null
-              },
-              {
-                "id": "2",
-                "width": 192,
-                "height": 96,
-                "text": null
-              },
-              {
-                "id": "3",
-                "width": 192,
-                "height": 96,
-                "text": null
-              },
-              {
-                "id": "4",
-                "width": 192,
-                "height": 96,
-                "text": null
-              }
-            ],
-            "edges": [],
-            "text": [
-              {
-                "nodeId": "1",
-                "text": ""
-              },
-              {
-                "nodeId": "2",
-                "text": ""
-              },
-              {
-                "nodeId": "3",
-                "text": ""
-              },
-              {
-                "nodeId": "4",
-                "text": ""
-              }
-            ]
-          }
-        },
-        "solution": {
-          "reference": [
-            "",
-            "",
-            "",
-            ""
-          ]
-        },
+        "goal": {},
+        "problem": {},
+        "solution": {},
         "result": {}
       }
     },
@@ -161,10 +71,10 @@
       "expose": true,
       "icon": 0,
       "tags": [
-        "test",
-        "test2"
+        "データ",
+        "要共有"
       ],
-      "title": "テスト",
+      "title": "図面データ管理について",
       "account": {
         "id": 1,
         "icon": "test.png",
@@ -239,10 +149,10 @@
       "expose": true,
       "icon": 0,
       "tags": [
-        "test",
-        "test2"
+        "開発",
+        "SaaS"
       ],
-      "title": "テスト",
+      "title": "開発タスク管理方法",
       "account": {
         "id": 1,
         "icon": "test.png",
@@ -317,10 +227,9 @@
       "expose": true,
       "icon": 0,
       "tags": [
-        "test",
-        "test2"
+        "マーケティング"
       ],
-      "title": "テスト",
+      "title": "デジタルマーケティング最適化",
       "account": {
         "id": 1,
         "icon": "test.png",
@@ -395,10 +304,9 @@
       "expose": true,
       "icon": 0,
       "tags": [
-        "test",
-        "test2"
+        "営業"
       ],
-      "title": "テスト",
+      "title": "セールス活動効率化",
       "account": {
         "id": 1,
         "icon": "test.png",
@@ -478,9 +386,10 @@
       },
       "expose": false,
       "icon": 4,
-      "title": "ideaideaideaidea",
+      "title": "顧客接点の改善",
       "tags": [
-        "tttttt"
+        "セールス",
+        "CRM"
       ],
       "data": {
         "businessFlow": {
@@ -562,10 +471,10 @@
       },
       "expose": false,
       "icon": 9,
-      "title": "title",
+      "title": "人事データ利活用",
       "tags": [
-        "eeeeeeeee",
-        "gggg"
+        "データ",
+        "検討中"
       ],
       "data": {
         "businessFlow": {
@@ -615,12 +524,10 @@
       },
       "expose": true,
       "icon": 8,
-      "title": "titletitletitle",
+      "title": "社内情報共有システム検討",
       "tags": [
-        "tag1",
-        "tag2",
-        "tag3",
-        "tag4"
+        "検討中",
+        "社内"
       ],
       "data": {
         "businessFlow": {
@@ -661,154 +568,7 @@
       }
     },
     {
-      "expose": true,
-      "icon": 0,
-      "tags": [],
-      "account": {
-        "id": 1,
-        "icon": "",
-        "name": "test user"
-      },
-      "created_at": "2030-12-31",
-      "data": {
-        "businessFlow": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "goal": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "problem": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "solution": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "result": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        }
-      },
-      "id": 9
-    },
-    {
-      "expose": true,
-      "icon": 0,
-      "tags": [],
-      "account": {
-        "id": 1,
-        "icon": "",
-        "name": "test user"
-      },
-      "created_at": "2030-12-31",
-      "data": {
-        "businessFlow": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "goal": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "problem": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "solution": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "result": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        }
-      },
-      "id": 10
-    },
-    {
-      "expose": true,
-      "icon": 0,
-      "tags": [],
-      "account": {
-        "id": 1,
-        "icon": "",
-        "name": "test user"
-      },
-      "created_at": "2030-12-31",
-      "data": {
-        "businessFlow": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "goal": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "problem": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "solution": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "result": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        }
-      },
-      "id": 11
-    },
-    {
-      "id": 12,
+      "id": 9,
       "created_at": "2030-12-31",
       "account": {
         "id": 1,
@@ -816,144 +576,192 @@
         "name": "test user"
       },
       "expose": true,
-      "icon": 0,
-      "title": "テストいし",
-      "tags": [],
+      "icon": 4,
+      "title": "顧客接点の効率化・改善",
+      "tags": [
+        "セールス",
+        "マーケティング",
+        "顧客情報"
+      ],
       "data": {
         "businessFlow": {
-          "text": "",
-          "reference": [
-            "あああ"
-          ],
+          "text": "「気づいたポイント」・架電が一度のみ。その後のフォローの動きがない。・全営業が報告書を作成しているかは要確認。・効果測定と今後の施策へ生かせているか？・メール送付からフォローまで一貫した営業効率化が必須。",
+          "reference": [],
           "flowChart": {
             "nodes": [
               {
                 "id": "1",
                 "width": 192,
                 "height": 96,
-                "text": ""
+                "text": null
               },
               {
                 "id": "2",
                 "width": 192,
                 "height": 96,
-                "text": ""
+                "text": null
               },
               {
                 "id": "3",
                 "width": 192,
                 "height": 96,
-                "text": ""
+                "text": null
+              },
+              {
+                "id": "4",
+                "width": 192,
+                "height": 96,
+                "text": null
+              },
+              {
+                "id": "5",
+                "width": 192,
+                "height": 96,
+                "text": null
+              },
+              {
+                "id": "6",
+                "width": 192,
+                "height": 96,
+                "text": null
               }
             ],
             "edges": [
               {
-                "id": "3-1",
-                "from": "3",
-                "to": "1"
-              },
-              {
                 "id": "2-1",
                 "from": "2",
                 "to": "1"
+              },
+              {
+                "id": "2-3",
+                "from": "2",
+                "to": "3"
+              },
+              {
+                "id": "3-4",
+                "from": "3",
+                "to": "4"
+              },
+              {
+                "id": "3-5",
+                "from": "3",
+                "to": "5"
+              },
+              {
+                "id": "3-6",
+                "from": "3",
+                "to": "6"
+              },
+              {
+                "id": "4-5",
+                "from": "4",
+                "to": "5"
+              },
+              {
+                "id": "5-6",
+                "from": "5",
+                "to": "6"
               }
             ],
             "text": [
               {
                 "nodeId": "1",
-                "text": ""
+                "text": "リスト入手"
               },
               {
                 "nodeId": "2",
-                "text": ""
+                "text": "マーケ部門"
               },
               {
                 "nodeId": "3",
-                "text": ""
+                "text": "メール送付"
+              },
+              {
+                "nodeId": "4",
+                "text": "架電"
+              },
+              {
+                "nodeId": "5",
+                "text": "訪問"
+              },
+              {
+                "nodeId": "6",
+                "text": "報告書"
               }
             ]
-          },
-          "table": null,
-          "dataBar": null
+          }
         },
         "goal": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
+          "text": "■営業メンバーが継続的に最適なタイミングと頻度でコンタクトできている状態\n■顧客設定の活動がデータ蓄積され最新情報を可視化できている状態\n■蓄積されたデータをもとにマーケティング部門へ共有できている状態\n"
         },
         "problem": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
+          "text": ""
         },
         "solution": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
+          "text": "クラウド製品導入：A社とB社とC社が代表的な製品群。特に従業員規模・製造業向けであると、B社が最適？\n自社新規開発：コンサル会社へ依頼が必須\n既存システム連携：既存システムとデータフローの洗い出しが必要",
+          "table": {
+            "head": [
+              "#",
+              "案",
+              "ゴール1実現度",
+              "ゴール2実現度",
+              "ゴール3実現度",
+              "コスト",
+              "ツール情報1",
+              "ツール情報2"
+            ],
+            "data": [
+              [
+                "1",
+                "クラウド製品導入",
+                "○",
+                "○",
+                "△",
+                "50~200k/月",
+                "https://www",
+                "https://www"
+              ],
+              [
+                "2",
+                "自社新規開発",
+                "○",
+                "○",
+                "○",
+                "50M",
+                "https://www",
+                ""
+              ],
+              [
+                "3",
+                "既存システム連携",
+                "△",
+                "△",
+                "○",
+                "5M",
+                "https://www",
+                ""
+              ]
+            ]
+          }
         },
         "result": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
+          "text": "実現度、コストをデータバーで整理。結果、クラウド製品導入かつB社が最適と判断。\n社内の現場意見を集約し、抽象化した結果（データバー表示）、B社への賛成意見も多数。\n",
+          "dataBar": [
+            {
+              "label": "A社",
+              "value": 20
+            },
+            {
+              "label": "B社",
+              "value": 60
+            },
+            {
+              "label": "C社",
+              "value": 40
+            }
+          ]
         }
       }
-    },
-    {
-      "expose": true,
-      "icon": 0,
-      "tags": [],
-      "account": {
-        "id": 1,
-        "icon": "",
-        "name": "test user"
-      },
-      "created_at": "2030-12-31",
-      "data": {
-        "businessFlow": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "goal": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "problem": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "solution": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        },
-        "result": {
-          "text": "",
-          "reference": null,
-          "flowChart": null,
-          "table": null,
-          "dataBar": null
-        }
-      },
-      "id": 13
     }
   ]
 }

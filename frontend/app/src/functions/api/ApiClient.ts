@@ -143,6 +143,7 @@ class ApiClient extends BaseApi{
                 }
             }
         ).then((res) => {
+            console.log(res.data.json())
             return res.data.id;
         })
     }

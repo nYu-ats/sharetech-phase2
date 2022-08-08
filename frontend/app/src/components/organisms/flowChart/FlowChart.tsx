@@ -94,7 +94,7 @@ export const FlowChart:VFC<FlowChartProps> = (props) => {
         </style>
         <Canvas
         maxHeight={500}
-        maxWidth={1024}
+        maxWidth={1500}
         direction="RIGHT"
         nodes={nodes}
         edges={edges}
